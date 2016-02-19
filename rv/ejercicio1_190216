@@ -10,7 +10,7 @@
     </style>
   </head>
   <body>
-    <script scr="three.min.js">
+    <script src="three.min.js">
     <script>
     var escena= new THREE.Scene();
     var fov=75;
