@@ -36,7 +36,6 @@ malla.rotation.y+=.01;
 
 renderer.render(escena,camara);
 
-
 }
 
 var escena,camara,renderer,malla;
