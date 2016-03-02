@@ -10,7 +10,7 @@ var cilindro=new THREE.Mesh(cilindroForma);
 esfera1.position.y=2;
 esfera2.position.y=-2;
 
-var forma=new THREE.Geomatry();
+var forma=new THREE.Geometry();
 
 THREE.GeometryUtils.merge(forma,esfera1);
 THREE.GeometryUtils.merge(forma,esfera2);
