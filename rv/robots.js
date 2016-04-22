@@ -98,7 +98,6 @@ BB8.prototype.plan = function(environment){
   if(this.sensor.colision==true)
    this.actuator.commands.push('RotarIzquierda');
   else
-   this.actuator.commands.push('Derecho');
 }
 
 BB8.prototype.act=function(environment){
