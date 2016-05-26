@@ -27,7 +27,7 @@ document.body.appendChild(renderer.domElement);
 
 
 <script>
-  var forma = new THREE.CylinderGeometry( 1,50,50)
+  var forma = new THREE.CylinderGeometry( 1,1,5,10)
   var material = new THREE.MeshDepthMaterial({color: 0x00ff00});
     var esfera = new THREE.Mesh(forma,material);
     escena.add(esfera);
