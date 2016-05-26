@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+<title> Lección 24/02/2016 </title>
+<meta http-equiv= "Content-Type"
+content="text/html; charset=UTF-8">
+<style>
+body { margin: 0;}
+canvas { width: 100%; height: 100%; } 
+</style>
+</head>
+<body>
+<script src= "three.min.js"></script>
+<script>
+  var escena =new THREE.Scene();
+  var fov =75; //campo de vision (field)
+  var aspect=window.innerWidth / window.innerHeight
+  //relacion de aspecto
+var near= 0.1; // Plano cercano
+var far= 1000; // plano lejano 
+var camara= new THREE.PerspectiveCamera(fov,aspect,near,far);
+camara.position.z=5;
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth,window.innerHeight);
+document.body.appendChild(renderer.domElement);
+</script>
+
+
+<script>
+  var forma = new THREE.CylinderGeometry( 1,50,50)
+  var material = new THREE.MeshDepthMaterial({color: 0x00ff00});
+    var esfera = new THREE.Mesh(forma,material);
+    escena.add(esfera);
+    function render(){
+      requestAnimationFrame(render);
+      esfera.rotation.x+= 0.1;
+      esfera.rotation.y+= 0.1;
+    renderer.render(escena,camara);
+    }
+    render();
+    
+</script>
+</body>
+</html>
