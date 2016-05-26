@@ -1,75 +1,56 @@
-function Wall(size, x, y){
-  THREE.Mesh.call(this,
-        new THREE.BoxGeometry(size, size, size),
-              new THREE.MeshNormalMaterial());
-  this.size=size;
-  this.position.x=x;
-  this.position.y=y;
+function Pierna(){
+  THREE.Object3D.call(this);
+  this.pierna=new THREE.Mesh(new THREE.BoxGeometry(1,5,1));
+  this.pie=new THREE.Mesh(new THREE.BoxGeometry(2,1,1));
+  this.pierna.position.y=-2.5;
+  this.pie.position.y=-4.5;
+  this.pie.position.x=1;
+  this.add(this.pierna);
+  this.add(this.pie);
 }
 
-Wall.prototype=new THREE.Mesh();
-Enviroment.prototype.setMap=function(map){
-  var _offset=Math.floor(map.length/2);
-  
-  for(var i=0; i<map.length; i++)
-  for(var j=0; j<map.length; j++){
-    if(map[i][j]==="x")
-    this.add(new Wall(l, j -_offset, -(i-_offset)));
-    else if(map[i][j]==="r")
-    this.add(new Robot(.5, j -_offset, -(i-_offset)));
-  }
+Pierna.prototype = new THREE.Object3D();
+
+function Cuerpo(){
+  THREE.Object3D.call(this);
+  this.cuerpo = new THREE.Mesh(new THREE.CylinderGeometry(1,2,5,10));
+  this.piernaD = new Pierna();
+  this.piernaI = new Pierna();
+  this.cuerpo.position.y=2;
+  this.piernaD.position.z=-1;
+  this.piernaI.position.z=1;
+  this.add(this.cuerpo);
+  this.add(this.piernaD);
+  this.add(this.piernaI);
 }
+
+Cuerpo.prototype = new THREE.Object3D;
 
 function setup(){
-  var mapa = new Array();
-  mapa[0]  = "xxxxxxxxxxxxxxxxxxxxxxx"; 
-  mapa[1]  = "x                     x";
-  mapa[2]  = "x                     x"; 
-  mapa[3]  = "x                     x"; 
-  mapa[4]  = "x                     x"; 
-  mapa[5]  = "x                     x"; 
-  mapa[6]  = "x                     x"; 
-  mapa[7]  = "x                     x";
-  mapa[8]  = "xxxx  xxxxxxxxxxxxxxxxx"; 
-  mapa[9]  = "x                     x"; 
-  mapa[10] = "x     r               x"; 
-  mapa[11] = "x                     x"; 
-  mapa[12] = "xxxxxxxxxxxxxxxx  xxxxx"; 
-  mapa[13] = "x                     x"; 
-  mapa[14] = "x                     x"; 
-  mapa[15] = "x                     x"; 
-  mapa[16] = "x                     x"; 
-  mapa[17] = "x                     x"; 
-  mapa[18] = "x                     x";
-  mapa[19] = "xxxxxxxxx    xxxxxxxxxx";  
-  mapa[20] = "x                     x"; 
-  mapa[21] = "x                     x"; 
-  mapa[22] = "x                     x"; 
-  mapa[23] = "x                     x";
-  mapa[24] = "xxxxxxxxxxxxxxxxxxxxxxx"; 
-  
-  enviroment = new Enviroment();
-  enviroment.setMap(mapa);
-  camera=new THREE.PerspectiveCamera();
-  camera.position.z=30;
-  
-  renderer=new THREE.WebGLRenderer();
-  renderer.setSize(window.innerHeight*.95, window.innerHeight*.95);
-  document.body.appendChild(renderer.domElement);
-  
-  enviroment.add(camera);
+  cuerpoc = new Cuerpo;
+  step=0.01;
+  escena = new THREE.Scene();
+  escena.add(cuerpoc);
+  camara = new THREE.PerspectiveCamera();
+  camara.position.z = 20;
+  renderer = new THREE.WebGLRenderer();
+  renderer.setSize (window.innerHeight*0.95, window.innerHeight*0.95);
+  document.body.appendChild( renderer.domElement );
 }
 
 function loop(){
-  requestAnimationFrame(loop);
-  
-  enviroment.sense();
-  enviroment.plan();
-  enviroment.act();
-  
-  renderer.render(enviroment,camera);
+  requestAnimationFrame( loop );
+  renderer.render( escena, camara);
+  cuerpoc.rotation.x+=0.01;
+  cuerpoc.rotation.y+=0.01;
+  if (Math.abs(cuerpoc.piernaD.rotation.z) > 0.5)
+    step = -step;
+  cuerpoc.piernaD.rotation.z+=step;
+  cuerpoc.piernaI.rotation.z-=step;
 }
-var enviroment, camera, renderer;
+
+var escena,camara,renderer;
+var step,cuerpoc;
 
 setup();
 loop();
