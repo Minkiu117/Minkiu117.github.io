@@ -27,7 +27,7 @@ document.body.appendChild(renderer.domElement);
 
 
 <script>
-  var forma = new THREE.TorusGeometry( 2,1,16,100)
+  var forma = new THREE.TorusGeometry( 1,.7,16,100)
   var material = new THREE.MeshNormalMaterial({color: 0x00ff00});
     var esfera = new THREE.Mesh(forma,material);
     escena.add(esfera);
