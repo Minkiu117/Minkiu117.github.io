@@ -1,11 +1,11 @@
 function setup() {
   
-  var esferaFormai = new THREE.SphereGeometry(8, 100, 100, 0, 6.3, 3, .7);
-  //var esferaFormas = new THREE.SphereGeometry(3, 100, 100, 0, Math.PI, 3*Math.PI/2, Math.PI/2);
+  var esferaFormai = new THREE.SphereGeometry(8, 200, 200, 0, 6.3, 3, .7);
+  var esferaFormas = new THREE.SphereGeometry(8, 200, 200, 0, 6.3, 0, .7);
   var mediaesferaForma = new THREE.SphereGeometry( 1.1, 100, 100, 0, Math.PI*2, 3*Math.PI/2, Math.PI/2);
   var cilindroForma = new THREE.CylinderGeometry(0.02,0.02,0.8,100);
   
-  //var esfera1 = new THREE.Mesh(esferaFormas);
+  var esfera1 = new THREE.Mesh(esferaFormas);
   var esfera2 = new THREE.Mesh(esferaFormai);
   var mediaesfera1 = new THREE.Mesh(mediaesferaForma);
   var cilindromalla = new THREE.Mesh( cilindroForma);
@@ -14,10 +14,11 @@ function setup() {
   cilindromalla.position.x=0;
   mediaesfera1.position.y=2.35;
   esfera2.position.y=8;
+  esfera1.position.y=-8;
 
   var forma = new THREE.Geometry();
   
-  //THREE.GeometryUtils.merge(forma, esfera1);
+  THREE.GeometryUtils.merge(forma, esfera1);
   THREE.GeometryUtils.merge(forma, esfera2);
   THREE.GeometryUtils.merge(forma, mediaesfera1);
   THREE.GeometryUtils.merge(forma, cilindromalla);
