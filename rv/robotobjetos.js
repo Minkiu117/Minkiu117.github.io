@@ -29,7 +29,7 @@ function setup(){
   escena.add(cascoOvni);
   escena.add(cabinaOvni);
   camara = new THREE.PerspectiveCamera();
-  camara.position.z=10;
+  camara.position.z=12;
   renderer = new THREE.WebGLRenderer();
   renderer.setSize (window.innerHeight*0.95, window.innerHeight*0.95);
   document.body.appendChild( renderer.domElement );
@@ -38,7 +38,6 @@ function setup(){
 function loop(){
   requestAnimationFrame( loop );
   renderer.render( escena, camara);
-  cascoOvni.rotation.x+=0.01;
   cabinaOvni.rotation.y+=0.01;
 }
 
