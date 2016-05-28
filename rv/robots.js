@@ -14,7 +14,7 @@ function setup() {
   cilindromalla.position.x=0;
   mediaesfera1.position.y=2.35;
   esfera2.position.y=8;
-  esfera1.position.y=-9;
+  esfera1.position.y=-7;
 
   var forma = new THREE.Geometry();
   
