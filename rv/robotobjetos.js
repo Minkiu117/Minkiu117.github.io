@@ -4,6 +4,8 @@ function Casco(){
   this.cuerpoi=new THREE.Mesh(new THREE.SphereGeometry(8, 200, 200, 0, Math.PI*2, 0, .68), new THREE.MeshBasicMaterial({color:0xffffff}));
   this.cuerpos.position.y=-5.5;
   this.cuerpoi.position.y=8;
+  this.cuerpos.position.x=0;
+  this.cuerpoi.position.x=0;
   this.add(this.cuerpos)
   this.add(this.cuerpoi)
 }
