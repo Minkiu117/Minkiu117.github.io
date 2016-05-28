@@ -1,7 +1,7 @@
 function setup() {
   
   var esferaFormai = new THREE.SphereGeometry(8, 200, 200, 0, 6.3, 3, .7);
-  var esferaFormas = new THREE.SphereGeometry(8, 200, 200, 0, 6.3, 0, .7);
+  var esferaFormas = new THREE.SphereGeometry(8, 200, 200, 0, 6.3, 0, .5);
   var mediaesferaForma = new THREE.SphereGeometry( 1.1, 100, 100, 0, Math.PI*2, 3*Math.PI/2, Math.PI/2);
   var cilindroForma = new THREE.CylinderGeometry(0.02,0.02,0.8,100);
   
@@ -14,7 +14,7 @@ function setup() {
   cilindromalla.position.x=0;
   mediaesfera1.position.y=2.35;
   esfera2.position.y=8;
-  esfera1.position.y=-6;
+  esfera1.position.y=-5.5;
 
   var forma = new THREE.Geometry();
   
