@@ -2,7 +2,7 @@ function setup() {
   
   var esferaFormai = new THREE.SphereGeometry(7, 200, 200, 0, Math.PI*2, Math.PI, .56);
   var esferaFormas = new THREE.SphereGeometry(8, 200, 200, 0, Math.PI*2, 0, .68);
-  var mediaesferaForma = new THREE.SphereGeometry( 1.1, 100, 100, 0, Math.PI*2, 3*Math.PI/2, Math.PI/2);
+  var mediaesferaForma = new THREE.SphereGeometry( 1.1, 100, 100, 0, Math.PI*2, 3*Math.PI/2, Math.PI);
   var cilindroForma = new THREE.CylinderGeometry(0.02,0.02,0.8,100);
   
   var esfera1 = new THREE.Mesh(esferaFormas);
