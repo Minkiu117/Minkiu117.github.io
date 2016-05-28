@@ -1,6 +1,6 @@
 function setup() {
   
-  var esferaFormai = new THREE.SphereGeometry(3, 100, 100, 0, 6.3, 3, .7);
+  var esferaFormai = new THREE.SphereGeometry(12, 100, 100, 0, 6.3, 3, .7);
   //var esferaFormas = new THREE.SphereGeometry(3, 100, 100, 0, Math.PI, 3*Math.PI/2, Math.PI/2);
   var mediaesferaForma = new THREE.SphereGeometry( 1.1, 100, 100, 0, Math.PI*2, 3*Math.PI/2, Math.PI/2);
   var cilindroForma = new THREE.CylinderGeometry(0.02,0.02,0.8,100);
