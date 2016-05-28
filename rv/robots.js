@@ -26,7 +26,6 @@ function setup() {
   THREE.GeometryUtils.merge(forma, mediaesfera1);
   THREE.GeometryUtils.merge(forma, cilindromalla);
   THREE.GeometryUtils.merge(forma, cilindromalla2);
-  THREE.GeometryUtils.merge(forma, cilindromalla3);
   
   malla = new THREE.Mesh( forma );
   
