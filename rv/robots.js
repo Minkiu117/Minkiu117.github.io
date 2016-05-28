@@ -4,13 +4,11 @@ function setup() {
   var esferaFormai = new THREE.SphereGeometry(3, 100, 100, 0, Math.PI, 3*Math.PI/4, Math.PI/2);
   var mediaesferaForma = new THREE.SphereGeometry( 1.1, 100, 100, 0, Math.PI*2, 3*Math.PI/2, Math.PI/2);
   var cilindroForma = new THREE.CylinderGeometry(0.02,0.02,0.8,100);
-  var cilindroForma2 = new THREE.CylinderGeometry(0.02,0.02,0.5,100);
   
   var esfera1 = new THREE.Mesh(esferaFormas);
   var esfera2 = new THREE.Mesh(esferaFormai);
   var mediaesfera1 = new THREE.Mesh(mediaesferaForma);
   var cilindromalla = new THREE.Mesh( cilindroForma);
-  var cilindromalla2 = new THREE.Mesh( cilindroForma2);
   
   cilindromalla.position.y=3.85;
   cilindromalla.position.x=0;
