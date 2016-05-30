@@ -38,7 +38,7 @@ function setup(){
  luzPuntual = new THREE.PointLight(0xffffff);
  luzPuntual.position.x=0;  
  luzPuntual.position.y=10;
- luzPuntual.position.z=30;
+ luzPuntual.position.z=50;
 
  cubo = new THREE.Mesh(new THREE.BoxGeometry(1,40,4), new THREE.MeshNormalMaterial());
  cubo2 = new THREE.Mesh(new THREE.BoxGeometry(1,40,4), new THREE.MeshNormalMaterial());
@@ -46,13 +46,13 @@ function setup(){
  cubo4 = new THREE.Mesh(new THREE.BoxGeometry(41,1,4), new THREE.MeshNormalMaterial());
  
  cubo.position.x=20;
- cubo2.position.x=-10;
- cubo3.position.y=10;
- cubo4.position.y=-10;
+ cubo2.position.x=-20;
+ cubo3.position.y=20;
+ cubo4.position.y=-20;
  
  escena = new THREE.Scene();
  camara = new THREE.PerspectiveCamera();
- camara.position.z=40;
+ camara.position.z=80;
  
  raycaster1 = new THREE.Raycaster(Ovnibot.position,new THREE.Vector3(1,0,0));
  raycaster2 = new THREE.Raycaster(Ovnibot.position,new THREE.Vector3(-1,0,0));
