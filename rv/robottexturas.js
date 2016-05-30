@@ -1,7 +1,7 @@
 function Ovni(){
   THREE.Object3D.call(this);
   THREE.ImageUtils.crossOrigin = '';
-  var textura = new THREE.TextureLoader().load('http://minkiu117.github.io/rv/sup.jpg');
+  var textura = new THREE.TextureLoader().load('http://minkiu117.github.io/rv/sup2.jpg');
   this.cuerpoi=new THREE.Mesh(new THREE.SphereGeometry(7, 200, 200, 0, Math.PI*2, Math.PI, .56), new THREE.MeshPhongMaterial({color:0xffffff}));
   this.cuerpos=new THREE.Mesh(new THREE.SphereGeometry(8, 200, 200, 0, Math.PI*2, 0, .68), new THREE.MeshPhongMaterial({map:textura}));
   this.cabina=new THREE.Mesh(new THREE.SphereGeometry( 1.1, 100, 100, 0, Math.PI*2, 3*Math.PI/2, Math.PI),new THREE.MeshPhongMaterial({color:0xffffff}));
