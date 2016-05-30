@@ -34,7 +34,7 @@ Ovni.prototype=new THREE.Object3D();
 function setup(){
 
  Ovnibot = new Ovni();
- Ovnibot.rotation.x=Math.PI/2; 	
+ Ovnibot.rotation.y=Math.PI/2; 	
  luzPuntual = new THREE.PointLight(0xffffff);
  luzPuntual.position.x=0;  
  luzPuntual.position.y=10;
@@ -104,8 +104,8 @@ function loop(){
  }
  Ovnibot.cabinaovni.rotation.y=angulo+0.4+cabinarota;
  if(angulo%Math.PI/2!=0){
- Ovnibot.cuerpos.rotation.x+=step2;
- Ovnibot.cuerpoi.rotation.x+=step2;
+ Ovnibot.cuerpos.rotation.y+=step2;
+ Ovnibot.cuerpoi.rotation.y+=step2;
  }
  else{
  Ovnibot.cuerpos.rotation.y+=step2;
