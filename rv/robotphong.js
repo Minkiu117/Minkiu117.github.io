@@ -45,7 +45,7 @@ function setup(){
 function loop(){
   requestAnimationFrame( loop );
   renderer.render( escena, camara);
-  cabinaOvni.rotation.y+=0.01;
+  cascoOvni.rotation.y+=0.01;
 }
 
 var escena,camara,luzPuntual,renderer;
