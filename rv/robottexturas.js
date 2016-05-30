@@ -39,8 +39,8 @@ function setup(){
 function loop(){
   requestAnimationFrame( loop );
   renderer.render( escena, camara);
-  Ovnibot.cuerpos.rotation.y-=0.01;
-  Ovnibot.cuerpoi.rotation.y-=0.01;
+  Ovnibot.cuerpos.rotation.y-=0.03;
+  Ovnibot.cuerpoi.rotation.y-=0.03;
   Ovnibot.rotation.x+=0.01;
 }
 
