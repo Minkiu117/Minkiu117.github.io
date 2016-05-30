@@ -13,7 +13,7 @@ function Casco(){
 
 function Cabina(){
   THREE.Object3D.call(this);
-  this.cabina=new THREE.Mesh(new THREE.SphereGeometry( 1.1, 100, 100, 0, Math.PI*2, 3*Math.PI/2, Math.PI),new THREE.MeshPhongMaterial({color:0x888888}));
+  this.cabina=new THREE.Mesh(new THREE.SphereGeometry( 1.1, 100, 100, 0, Math.PI*2, 3*Math.PI/2, Math.PI),new THREE.MeshPhongMaterial({color:0xffffff}));
   this.antena=new THREE.Mesh(new THREE.CylinderGeometry(0.02,0.02,0.8,100),new THREE.MeshPhongMaterial({color:0xffffff}));
   this.cabina.position.y=2.35;
   this.antena.position.y=3.85;
@@ -34,6 +34,7 @@ function setup(){
   escena = new THREE.Scene();
   escena.add(cascoOvni);
   escena.add(cabinaOvni);
+  escena.add(luzPuntual);
   camara = new THREE.PerspectiveCamera();
   camara.position.z=12;
   renderer = new THREE.WebGLRenderer();
@@ -47,7 +48,7 @@ function loop(){
   cabinaOvni.rotation.y+=0.01;
 }
 
-var escena,camara,renderer;
+var escena,camara,luzPuntual,renderer;
 var cabinaOvni,cascoOvni;
 
 setup();
