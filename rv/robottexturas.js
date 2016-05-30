@@ -3,9 +3,10 @@ function Ovni(){
   THREE.ImageUtils.crossOrigin = '';
   var texturasup = new THREE.TextureLoader().load('http://minkiu117.github.io/rv/sup.jpg');
   var texturainf = new THREE.TextureLoader().load('http://minkiu117.github.io/rv/inf.jpg');
+  var texturacab = new THREE.TextureLoader().load('http://minkiu117.github.io/rv/cab.jpg');
   this.cuerpoi=new THREE.Mesh(new THREE.SphereGeometry(7, 200, 200, 0, Math.PI*2, Math.PI, .56), new THREE.MeshPhongMaterial({map:texturainf}));
   this.cuerpos=new THREE.Mesh(new THREE.SphereGeometry(8, 200, 200, 0, Math.PI*2, 0, .68), new THREE.MeshPhongMaterial({map:texturasup}));
-  this.cabina=new THREE.Mesh(new THREE.SphereGeometry( 1.1, 100, 100, 0, Math.PI*2, 3*Math.PI/2, Math.PI),new THREE.MeshPhongMaterial({color:0xffffff}));
+  this.cabina=new THREE.Mesh(new THREE.SphereGeometry( 1.1, 100, 100, 0, Math.PI*2, 3*Math.PI/2, Math.PI),new THREE.MeshPhongMaterial({map:texturacab}));
   this.antena=new THREE.Mesh(new THREE.CylinderGeometry(0.02,0.02,0.8,100),new THREE.MeshPhongMaterial({color:0xffffff}));
   this.cuerpoi.position.y=8;
   this.cuerpos.position.y=-5.5;
@@ -39,6 +40,7 @@ function loop(){
   requestAnimationFrame( loop );
   renderer.render( escena, camara);
   Ovnibot.rotation.y+=0.01;
+  Ovnibot.rotation.x+=0.01;
 }
 
 var escena,camara,luzPuntual,renderer;
