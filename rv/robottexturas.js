@@ -24,7 +24,7 @@ function setup(){
   Ovnibot = new Ovni();
   luzPuntual = new THREE.PointLight(0xffffff);
   luzPuntual.position.x=10;
-  luzPuntual.position.y=-7;
+  luzPuntual.position.y=10;
   luzPuntual.position.z=40;
   escena = new THREE.Scene();
   escena.add(Ovnibot);
