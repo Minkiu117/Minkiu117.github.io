@@ -29,7 +29,7 @@ function setup(){
   cabinaOvni = new Cabina();  
   luzPuntual = new THREE.PointLight(0xffffff);
   luzPuntual.position.x=12;
-  luzPuntual.position.y=0;
+  luzPuntual.position.y=5;
   luzPuntual.position.z=12;
   escena = new THREE.Scene();
   escena.add(cascoOvni);
