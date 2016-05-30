@@ -104,8 +104,8 @@ function loop(){
  }
  Ovnibot.cabinaovni.rotation.y=angulo+0.4+cabinarota;
  if(angulo%Math.PI/2!=0){
- Ovnibot.cuerpos.rotation.y+=step2;
- Ovnibot.cuerpoi.rotation.y+=step2;
+ Ovnibot.cuerpos.rotation.y-=step2;
+ Ovnibot.cuerpoi.rotation.y-=step2;
  }
  else{
  Ovnibot.cuerpos.rotation.y+=step2;
