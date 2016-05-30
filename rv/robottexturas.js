@@ -41,8 +41,8 @@ function loop(){
   renderer.render( escena, camara);
   Ovnibot.cuerpos.rotation.y-=0.03;
   Ovnibot.cuerpoi.rotation.y-=0.03;
-  Ovnibot.rotation.x+=0.01;
-  Ovnibot.rotation.z+=0.01;
+  Ovnibot.rotation.x-=0.01;
+  Ovnibot.rotation.z-=0.01;
 }
 
 var escena,camara,luzPuntual,renderer;
