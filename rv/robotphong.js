@@ -28,9 +28,9 @@ function setup(){
   cascoOvni = new Casco();
   cabinaOvni = new Cabina();  
   luzPuntual = new THREE.PointLight(0xffffff);
-  luzPuntual.position.x=0;
-  luzPuntual.position.y=-5;
-  luzPuntual.position.z=30;
+  luzPuntual.position.x=10;
+  luzPuntual.position.y=-7;
+  luzPuntual.position.z=40;
   escena = new THREE.Scene();
   escena.add(cascoOvni);
   escena.add(cabinaOvni);
