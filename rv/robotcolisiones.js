@@ -34,7 +34,7 @@ Ovni.prototype=new THREE.Object3D();
 function setup(){
 
  Ovnibot = new Ovni();
- Ovnibot.rotation.y=Math.PI/2; 	
+ Ovnibot.rotation.x=Math.PI/2; 	
  luzPuntual = new THREE.PointLight(0xffffff);
  luzPuntual.position.x=0;  
  luzPuntual.position.y=10;
