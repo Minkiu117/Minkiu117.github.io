@@ -66,7 +66,7 @@ function setup(){
  escena.add(camara);
  escena.add(Ovnibot);
  escena.add(luzPuntual);
- step=0.1;
+ step=0.3;
  step2=step*2;
  cabinarota=Math.PI+0.1;	
  renderer = new THREE.WebGLRenderer();
@@ -82,10 +82,10 @@ function loop(){
  obstaculo3 = raycaster3.intersectObject(cubo3,true);
  obstaculo4 = raycaster4.intersectObject(cubo4,true);
  
- if ((obstaculo1.length > 0 && (obstaculo1[0].distance<=2)) || 
-     (obstaculo2.length > 0 && (obstaculo2[0].distance<=2)) ||
-     (obstaculo3.length > 0 && (obstaculo3[0].distance<=2)) ||
-     (obstaculo4.length > 0 && (obstaculo4[0].distance<=2)))
+ if ((obstaculo1.length > 0 && (obstaculo1[0].distance<=4)) || 
+     (obstaculo2.length > 0 && (obstaculo2[0].distance<=4)) ||
+     (obstaculo3.length > 0 && (obstaculo3[0].distance<=4)) ||
+     (obstaculo4.length > 0 && (obstaculo4[0].distance<=4)))
  {
   angulo+=Math.PI/2;
   cabinarota=Math.PI/4+0.8;
