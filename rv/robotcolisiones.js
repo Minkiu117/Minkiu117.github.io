@@ -40,7 +40,7 @@ function setup(){
  luzPuntual.position.y=10;
  luzPuntual.position.z=30;
 
- cubo = new THREE.Mesh(new THREE.BoxGeometry(1,20,4), new THREE.MeshNormalMaterial());
+ cubo = new THREE.Mesh(new THREE.BoxGeometry(1,25,4), new THREE.MeshNormalMaterial());
  cubo2 = new THREE.Mesh(new THREE.BoxGeometry(1,20,4), new THREE.MeshNormalMaterial());
  cubo3 = new THREE.Mesh(new THREE.BoxGeometry(21,1,4), new THREE.MeshNormalMaterial());
  cubo4 = new THREE.Mesh(new THREE.BoxGeometry(21,1,4), new THREE.MeshNormalMaterial());
