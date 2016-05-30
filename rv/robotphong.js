@@ -1,7 +1,7 @@
 function Casco(){
   THREE.Object3D.call(this);
   this.cuerpos=new THREE.Mesh(new THREE.SphereGeometry(7, 200, 200, 0, Math.PI*2, Math.PI, .56), new THREE.MeshPhongMaterial({color:0xffffff}));
-  this.cuerpoi=new THREE.Mesh(new THREE.SphereGeometry(8, 200, 200, 0, Math.PI*2, 0, .68), new THREE.MeshPhongMaterial({color:0x888888}));
+  this.cuerpoi=new THREE.Mesh(new THREE.SphereGeometry(8, 200, 200, 0, Math.PI*2, 0, .68), new THREE.MeshPhongMaterial({color:0xffffff}));
   this.cuerpos.position.y=8;
   this.cuerpoi.position.y=-5.5;
   this.cuerpos.position.x=0;
