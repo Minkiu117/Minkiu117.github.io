@@ -1,6 +1,6 @@
 function setup(){
 THREE.ImageUtils.crossOrigin = '';
-var textura = new THREE.TextureLoader().load('./jade_dragon.jpg');
+var textura = new THREE.TextureLoader().load('http://minkiu117.github.io/rv/ying%20yang.jpg');
 var forma=new THREE.CylinderGeometry(2.5,2.5,10,50);
 var material=new THREE.MeshPhongMaterial({map:textura});
 var pared1 = new THREE.Mesh(new THREE.BoxGeometry(1,20,10), new THREE.MeshPhongMaterial({color:'#ffffff'}));
