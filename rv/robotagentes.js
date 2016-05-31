@@ -78,7 +78,7 @@ Ovni.prototype.sense=function(environment){
  //this.sensor2.set(this.position, new THREE.Vector3(Math.sin(this.rotation.z),Math.cos(this.rotation.z),0));
  var obstaculo = this.sensor.intersectObjects(environment.children,true);
  //var obstaculo2 = this.sensor2.intersectObjects(environment.children,true);
- if ((obstaculo.length>0&&(obstaculo[0].distance<=2)))
+ if ((obstaculo.length>0&&(obstaculo[0].distance<=2.2)))
   this.sensor.colision=true;
  else
   this.sensor.colision=false;
@@ -116,7 +116,7 @@ Ovni.prototype.operations = {};
 
 Ovni.prototype.operations.Derecho = function(robot,step){
  if(step==undefined)
-  step=0.1;
+  step=0.3;
  robot.position.x+=step*Math.cos(robot.rotation.z);
  robot.position.y+=step*Math.sin(robot.rotation.z);
  robot.cuerpoi.rotation.y-=0.5;
