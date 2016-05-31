@@ -25,12 +25,12 @@ function Ovni(){
   var texturainf = new THREE.TextureLoader().load('http://minkiu117.github.io/rv/inf.jpg');
   this.cuerpoi=new THREE.Mesh(new THREE.SphereGeometry(7, 200, 200, 0, Math.PI*2, Math.PI, .56), new THREE.MeshPhongMaterial({map:texturainf}));
   this.cuerpos=new THREE.Mesh(new THREE.SphereGeometry(8, 200, 200, 0, Math.PI*2, 0, .68), new THREE.MeshPhongMaterial({map:texturasup}));
-  this.cuerpoi.position.z=0;
-  this.cuerpos.position.z=0;
+  this.cuerpoi.position.x=0;
+  this.cuerpos.position.x=0;
   this.cuerpoi.position.y=8;
   this.cuerpos.position.y=-5.5;
   this.cabinaovni = new Cabina();
-  this.cabinaovni.position.z=0;
+  this.cabinaovni.position.x=0;
   this.cuerpoi.rotation.y=-0.25;
   this.cuerpos.rotation.y=-0.25;
   this.add(this.cuerpos)
