@@ -40,8 +40,8 @@ function Ovni(){
  //this.sensor2=new Sensor();
  this.actuator=new Array();
  
- this.cuerpo.rotation.x=Math.PI/2;
- this.cabezabb8.rotation.x=Math.PI/2;
+ this.cuerpos.rotation.x=Math.PI/2;
+ this.cuerpoi.rotation.x=Math.PI/2;
  this.cabinaovni.rotation.x=Math.PI/2;
  this.cabinaovni.rotation.y=Math.PI+0.5;
  this.cuerpos.scale.x=0.3;
