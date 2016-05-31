@@ -38,19 +38,18 @@ function Ovni(){
  //this.sensor2=new Sensor();
  this.actuator=new Array();
  
- this.cuerpoi.rotation.x=Math.PI/2;
- this.cuerpos.rotation.x=Math.PI/2;
+
  this.cabinaovni.rotation.x=Math.PI/2;
  this.cabinaovni.rotation.y=Math.PI+0.5;
- this.cuerpos.scale.x=0.5;
- this.cuerpos.scale.y=0.5;
- this.cuerpos.scale.z=0.5;
- this.cuerpoi.scale.x=0.5;
- this.cuerpoi.scale.y=0.5;
- this.cuerpoi.scale.z=0.5;
- this.cabinaovni.scale.x=0.5;
- this.cabinaovni.scale.y=0.5;
- this.cabinaovni.scale.z=0.5;
+ this.cuerpos.scale.x=0.2;
+ this.cuerpos.scale.y=0.2;
+ this.cuerpos.scale.z=0.2;
+ this.cuerpoi.scale.x=0.2;
+ this.cuerpoi.scale.y=0.2;
+ this.cuerpoi.scale.z=0.2;
+ this.cabinaovni.scale.x=0.2;
+ this.cabinaovni.scale.y=0.2;
+ this.cabinaovni.scale.z=0.2;
 }
 
 Ovni.prototype=new Agent();
