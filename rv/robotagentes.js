@@ -42,15 +42,7 @@ function Ovni(x=0, y=0){
  this.cuerpoi.rotation.x=Math.PI/2;
  this.cabinaovni.rotation.x=Math.PI/2;
  this.cabinaovni.rotation.y=Math.PI+0.5;
- this.cuerpos.scale.x=0.3;
- this.cuerpos.scale.y=0.3;
- this.cuerpos.scale.z=0.3;
- this.cuerpoi.scale.x=0.3;
- this.cuerpoi.scale.y=0.3;
- this.cuerpoi.scale.z=0.3;
- this.cabinaovni.scale.x=0.3;
- this.cabinaovni.scale.y=0.3;
- this.cabinaovni.scale.z=0.3;
+
 }
 
 Ovni.prototype=new Agent();
