@@ -178,8 +178,8 @@ function setup(){
  entorno.setMap(mapa);
  var floor=new THREE.Mesh(new THREE.BoxGeometry(28,34,0.1), new THREE.MeshLambertMaterial({color:0x00ff00}));
  floor.position.z=-0.5;
- floor.position.x=0;
- floor.position.y=-0.3;
+ floor.position.x=-0.5;
+ floor.position.y=-0.5;
  iluminacion = new THREE.PointLight(0xffffff);
  iluminacion.position.z=30;
  iluminacion.position.y=20;
