@@ -139,12 +139,12 @@ function setup(){
    mapa[0] = "xxxxxxxxxxxxxxxxxxxxxxxxxxxx";
    mapa[1] = "x      x                   x";
    mapa[2] = "x      x                   x";
-   mapa[3] = "x             x            x";
-   mapa[4] = "x             x            x";
-   mapa[5] = "xxxxxxxxxxxxxxx            x";
-   mapa[6] = "x                          x";
-   mapa[7] = "x                          x";
-   mapa[8] = "x                          x";
+   mapa[3] = "x                          x";
+   mapa[4] = "x            xx            x";
+   mapa[5] = "x             x            x";
+   mapa[6] = "x             x            x";
+   mapa[7] = "x             x            x";
+   mapa[8] = "x     xxxxxxxxx            x";
    mapa[9] = "x                          x";
   mapa[10] = "x                          x";
   mapa[11] = "x                          x";
@@ -169,7 +169,12 @@ function setup(){
 
  entorno=new Environment();
  entorno.setMap(mapa);
- var floor=new THREE.Mesh(new THREE.BoxGeometry(28,30,0.1), new THREE.MeshLambertMaterial({color:0x00ff00}));
+ THREE.ImageUtils.crossOrigin = '';
+ var texturap = THREE.ImageUtils.loadTexture('http://minkiu117.github.io/rv/piso2.jpg');   //Cargo la textura de las paredes
+ texturap.wrapS = texturap.wrapT = THREE.RepeatWrapping; 	//Defino que la imagen se repita a lo largo de la malla
+ texturap.repeat.set( 10, 10 );
+ texturap.anisotropy=256;										//resalta el detalle de la textura
+ var floor=new THREE.Mesh(new THREE.BoxGeometry(34,36,0.1), new THREE.MeshLambertMaterial({map:texturap}));//Creo el material de la pared tipo Lambert con la textura dada
  floor.position.z=-0.5;
  floor.position.x=-1.5;
  floor.position.y=0.5;
