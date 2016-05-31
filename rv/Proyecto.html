@@ -50,7 +50,7 @@
 				THREE.GeometryUtils.merge(forma,pared1);           //Agrego a la geometria forma ambas extruciones para que se vuelva una sola  
 				THREE.GeometryUtils.merge(forma,pared2);
 				
-				var paredTextura = THREE.ImageUtils.loadTexture('texturas/ecopiedra.jpg');   //Cargo la textura de las paredes
+				var paredTextura = THREE.ImageUtils.loadTexture('http://minkiu117.github.io/rv/ecopiedra.jpg');   //Cargo la textura de las paredes
 				paredTextura.wrapS = paredTextura.wrapT = THREE.RepeatWrapping; 	//Defino que la imagen se repita a lo largo de la malla 
 				paredTextura.anisotropy=256;										//resalta el detalle de la textura
 				var material= new THREE.MeshLambertMaterial({map: paredTextura});//Creo el material de la pared tipo Lambert con la textura dada
@@ -62,7 +62,7 @@
 	      		escena.add(pared);									//agrego la pared a la escena
 				
 				/////////////////////////////Generacion de el piso////////////////////////////////////
-				var pisoTextura = new THREE.ImageUtils.loadTexture( 'texturas/piso2.jpg' );		//Carga la textura del piso
+				var pisoTextura = new THREE.ImageUtils.loadTexture( 'http://minkiu117.github.io/rv/piso2.jpg' );		//Carga la textura del piso
 		    	pisoTextura.wrapS = pisoTextura.wrapT = THREE.RepeatWrapping; 					//defino que la textura se repia en la malla
 			    pisoTextura.repeat.set( 10, 10 );												//defino el nuero de veces que se repitira
 			    var pisoMaterial = new THREE.MeshLambertMaterial( { map: pisoTextura, side: THREE.DoubleSide } ); //Crea el material del piso
