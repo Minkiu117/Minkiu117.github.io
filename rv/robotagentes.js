@@ -28,8 +28,8 @@ function Ovni(x=0, y=0){
   this.cuerpoi.position.y=8;
   this.cuerpos.position.y=-5.5;
   this.cabinaovni = new Cabina();
-  this.cuerpoi.rotation.y=-0.25;
-  this.cuerpos.rotation.y=-0.25;
+  //this.cuerpoi.rotation.y=-0.25;
+  //this.cuerpos.rotation.y=-0.25;
   this.add(this.cuerpos)
   this.add(this.cuerpoi)
   this.add(this.cabinaovni);
@@ -42,6 +42,15 @@ function Ovni(x=0, y=0){
  this.cuerpoi.rotation.x=Math.PI/2;
  this.cabinaovni.rotation.x=Math.PI/2;
  this.cabinaovni.rotation.y=Math.PI+0.5;
+ this.cuerpos.scale.x=0.3;
+ this.cuerpos.scale.y=0.3;
+ this.cuerpos.scale.z=0.3;
+ this.cuerpoi.scale.x=0.3;
+ this.cuerpoi.scale.y=0.3;
+ this.cuerpoi.scale.z=0.3;
+ this.cabinaovni.scale.x=0.3;
+ this.cabinaovni.scale.y=0.3;
+ this.cabinaovni.scale.z=0.3;
 
 }
 
