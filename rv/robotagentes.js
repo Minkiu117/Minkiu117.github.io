@@ -18,8 +18,8 @@ function Cabina(){
 
 Cabina.prototype=new THREE.Object3D();
 
-function Ovni(x=0, z=0){
- Agent.call(this,x,z);
+function Ovni(x=0, y=0){
+ Agent.call(this,x,y);
   THREE.ImageUtils.crossOrigin = '';
   var texturasup = new THREE.TextureLoader().load('http://minkiu117.github.io/rv/sup.jpg');
   var texturainf = new THREE.TextureLoader().load('http://minkiu117.github.io/rv/inf.jpg');
