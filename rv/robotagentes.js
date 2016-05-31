@@ -121,7 +121,8 @@ Ovni.prototype.operations.Derecho = function(robot,step){
   step=0.1;
  robot.position.x+=step*Math.cos(robot.rotation.z);
  robot.position.y+=step*Math.sin(robot.rotation.z);
- robot.cuerpo.rotation.z-=0.5;
+ robot.cuerpoi.rotation.z-=0.5;
+ robot.cuerpos.rotation.z-=0.5;
 };
 
 Ovni.prototype.operations.RotarDerecha = function(robot,angulo){
