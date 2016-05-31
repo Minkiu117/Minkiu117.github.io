@@ -1,3 +1,57 @@
+function Sensor(position,direction){
+ THREE.Raycaster.call(this,position,direction);
+ this.colision=false;
+}
+Sensor.prototype=new THREE.Raycaster();
+
+function Cabina(){
+  THREE.Object3D.call(this);
+  THREE.ImageUtils.crossOrigin = '';
+  var texturacab = new THREE.TextureLoader().load('http://minkiu117.github.io/rv/cab.jpg');
+  this.cabina=new THREE.Mesh(new THREE.SphereGeometry( 1.1, 100, 100, 0, Math.PI*2, 3*Math.PI/2, Math.PI),new THREE.MeshPhongMaterial({map:texturacab}));
+  this.antena=new THREE.Mesh(new THREE.CylinderGeometry(0.02,0.02,0.8,100),new THREE.MeshPhongMaterial({color:0xffffff}));
+  this.cabina.position.y=7.35;
+  this.antena.position.y=8.85;
+  this.add(this.cabina);
+  this.add(this.antena);
+}
+
+Cabina.prototype=new THREE.Object3D();
+
+function Ovni(x=0, y=0){
+ Agent.call(this,x,y);
+  THREE.ImageUtils.crossOrigin = '';
+  var texturasup = new THREE.TextureLoader().load('http://minkiu117.github.io/rv/sup.jpg');
+  var texturainf = new THREE.TextureLoader().load('http://minkiu117.github.io/rv/inf.jpg');
+  this.cuerpoi=new THREE.Mesh(new THREE.SphereGeometry(7, 200, 200, 0, Math.PI*2, Math.PI, .56), new THREE.MeshPhongMaterial({map:texturainf}));
+  this.cuerpos=new THREE.Mesh(new THREE.SphereGeometry(8, 200, 200, 0, Math.PI*2, 0, .68), new THREE.MeshPhongMaterial({map:texturasup}));
+  this.cabinaovni = new Cabina();
+  this.add(this.cuerpos)
+  this.add(this.cuerpoi)
+  this.add(this.cabinaovni);
+  
+  this.sensor=new Sensor();
+ //this.sensor2=new Sensor();
+ this.actuator=new Array();
+ 
+ this.cuerpos.rotation.x=Math.PI/2;
+ this.cuerpoi.rotation.x=Math.PI/2;
+ this.cabinaovni.rotation.x=Math.PI/2;
+ //this.cabinaovni.rotation.y=Math.PI+0.5;
+ this.cuerpos.scale.x=0.3;
+ this.cuerpos.scale.y=0.3;
+ this.cuerpos.scale.z=0.3;
+ this.cuerpoi.scale.x=0.3;
+ this.cuerpoi.scale.y=0.3;
+ this.cuerpoi.scale.z=0.3;
+ this.cabinaovni.scale.x=0.35;
+ this.cabinaovni.scale.y=0.35;
+ this.cabinaovni.scale.z=0.35;
+
+}
+
+Ovni.prototype=new Agent();
+
 var escena = new THREE.Scene(); //Se crea la escena									//Punto mas lejano
 
 				var camara = new THREE.PerspectiveCamera(); //Definicionde la perspectiva de la camara 
@@ -500,15 +554,78 @@ figura2.moveTo(-22,25);
 				var luzAmbiental = new THREE.AmbientLight(0x111111);							//Se crea una luz ambiental
 		     	escena.add(luzAmbiental);														//Se agrega a la escena
 		    ////////////////////////////////////////////////////////////////////////////////////////////////////////
-		    var tipo_evento = 'resize';
-        var listener=function(){
+		    	var tipo_evento = 'resize';
+        		var listener=function(){
 				camara.aspect=window.innerWidth/window.innerHeight;
 				camara.updateProjectionMatrix();
 				renderer.setSize(window.innerWidth,window.innerHeight);
 			  }
 			  var capturarp=false;
   			window.addEventListener(tipo_evento,listener,capturarp);
-				
+			
+			Ovni.prototype.sense=function(escena){
+			 this.sensor.set(this.position, new THREE.Vector3(Math.cos(this.rotation.z),Math.sin(this.rotation.z),0));
+			 //this.sensor2.set(this.position, new THREE.Vector3(Math.sin(this.rotation.z),Math.cos(this.rotation.z),0));
+			 var obstaculo = this.sensor.intersectObjects(escena.children,true);
+			 //var obstaculo2 = this.sensor2.intersectObjects(environment.children,true);
+			 if ((obstaculo.length>0&&(obstaculo[0].distance<=2.2)))
+			  this.sensor.colision=true;
+			 else
+			  this.sensor.colision=false;
+			 /*if((obstaculo2.length>0&&(obstaculo2[0].distance<=1)))
+			  this.sensor2.colision=true;
+			 else
+			  this.sensor2.colision=false;*/
+			}
+			
+			Ovni.prototype.plan = function(escena){
+			 this.actuator.commands=[];
+			 /*if(this.sensor.colision==false && this.sensor2.colision==true)
+			  this.actuator.commands.push('Derecho');
+			 else if(this.sensor.colision==true && this.sensor2.colision==true)
+			   this.actuator.commands.push('RotarDerecha');
+			 else
+			   this.actuator.commands.push('RotarIzquierda');*/
+			  if(this.sensor.colision==true)
+			   this.actuator.commands.push('RotarIzquierda');
+			  else
+			   this.actuator.commands.push('Derecho');
+			}
+			
+			Ovni.prototype.act=function(escena){
+			 var command=this.actuator.commands.pop();
+			 if(command==undefined)
+			  console.log('Undefined command');
+			 else if(command in this.operations)
+			  this.operations[command](this);
+			 else
+			  console.log('Unknown command'); 
+			}
+			
+			Ovni.prototype.operations = {};
+			
+			Ovni.prototype.operations.Derecho = function(robot,step){
+			 if(step==undefined)
+			  step=0.3;
+			 robot.position.x+=step*Math.cos(robot.rotation.z);
+			 robot.position.y+=step*Math.sin(robot.rotation.z);
+			 robot.cuerpoi.rotation.y-=0.5;
+			 robot.cuerpos.rotation.y-=0.5;
+			};
+			
+			Ovni.prototype.operations.RotarDerecha = function(robot,angulo){
+			 if(angulo==undefined){
+			  angulo=-Math.PI/2;
+			 }
+			 robot.rotation.z+=angulo;
+			};
+			
+			Ovni.prototype.operations.RotarIzquierda = function(robot,angulo){
+			 if(angulo==undefined){
+			  angulo=Math.PI/2;
+			 }
+			 robot.rotation.z+=angulo;
+			};	
 			////////////////////////////////////Configuaracion de sensores///////////////////////////////////////
 			var reloj = new THREE.Clock();
 			var controles = new THREE.FirstPersonControls(camara);
