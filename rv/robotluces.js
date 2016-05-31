@@ -26,7 +26,7 @@ function Ovni(x=0, y=0){
   this.cuerpoi=new THREE.Mesh(new THREE.SphereGeometry(7, 200, 200, 0, Math.PI*2, Math.PI, .56), new THREE.MeshPhongMaterial({map:texturainf}));
   this.cuerpos=new THREE.Mesh(new THREE.SphereGeometry(8, 200, 200, 0, Math.PI*2, 0, .68), new THREE.MeshPhongMaterial({map:texturasup}));
   this.cuerpoi.position.y=14.5;
-  this.cuerpos.position.y=-1;
+  this.cuerpos.position.y=-.5;
   this.cabinaovni = new Cabina();
   this.add(this.cuerpos)
   this.add(this.cuerpoi)
@@ -182,8 +182,8 @@ function setup(){
  floor.position.x=-3.5;
  floor.position.y=0.5;
  iluminacion = new THREE.PointLight(0xffffff);
- iluminacion.position.z=30;
- iluminacion.position.y=20;
+ iluminacion.position.z=50;
+ iluminacion.position.y=25;
 
  camara=new THREE.PerspectiveCamera();
  camara.position.z=40;
