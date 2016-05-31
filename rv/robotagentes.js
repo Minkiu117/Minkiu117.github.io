@@ -10,8 +10,8 @@ function Cabina(){
   var texturacab = new THREE.TextureLoader().load('http://minkiu117.github.io/rv/cab.jpg');
   this.cabina=new THREE.Mesh(new THREE.SphereGeometry( 1.1, 100, 100, 0, Math.PI*2, 3*Math.PI/2, Math.PI),new THREE.MeshPhongMaterial({map:texturacab}));
   this.antena=new THREE.Mesh(new THREE.CylinderGeometry(0.02,0.02,0.8,100),new THREE.MeshPhongMaterial({color:0xffffff}));
-  this.cabina.position.y=10.35;
-  this.antena.position.y=11.85;
+  this.cabina.position.y=7.35;
+  this.antena.position.y=8.85;
   this.add(this.cabina);
   this.add(this.antena);
 }
@@ -25,7 +25,7 @@ function Ovni(x=0, z=0){
   var texturainf = new THREE.TextureLoader().load('http://minkiu117.github.io/rv/inf.jpg');
   this.cuerpoi=new THREE.Mesh(new THREE.SphereGeometry(7, 200, 200, 0, Math.PI*2, Math.PI, .56), new THREE.MeshPhongMaterial({map:texturainf}));
   this.cuerpos=new THREE.Mesh(new THREE.SphereGeometry(8, 200, 200, 0, Math.PI*2, 0, .68), new THREE.MeshPhongMaterial({map:texturasup}));
-  this.cuerpoi.position.y=8;
+  this.cuerpoi.position.y=13.5;
   //this.cuerpos.position.y=-5.5;
   this.cabinaovni = new Cabina();
   this.add(this.cuerpos)
