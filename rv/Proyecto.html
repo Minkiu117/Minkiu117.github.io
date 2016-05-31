@@ -15,15 +15,13 @@
                 <script>
 				var escena = new THREE.Scene(); //Se crea la escena
 
-				var fov = 45;                                       //Campo de Visión en grados
+				var fov = 0;                                       //Campo de Visión en grados
 				var aspect = window.innerWidth / window.innerHeight //Relación de aspecto
 				var near = 0.1;										//Punto mas cercano
 				var far = 20000;									//Punto mas lejano
 
 				var camara = new THREE.PerspectiveCamera(); //Definicionde la perspectiva de la camara 
-				camara.rotation.x = -50;
 				camara.position.y = 10;
-				camara.rotation.z = -50;
 														//Posicion en Z de la camara 
 
 				var renderer = new THREE.WebGLRenderer();						//Definicion del Render
