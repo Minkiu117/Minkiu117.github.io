@@ -39,15 +39,15 @@ function Ovni(x=0, z=0){
  this.cuerpoi.rotation.x=Math.PI/2;
  this.cabinaovni.rotation.x=Math.PI/2;
  //this.cabinaovni.rotation.y=Math.PI+0.5;
- this.cuerpos.scale.x=0.35;
- this.cuerpos.scale.y=0.35;
- this.cuerpos.scale.z=0.35;
- this.cuerpoi.scale.x=0.35;
- this.cuerpoi.scale.y=0.35;
- this.cuerpoi.scale.z=0.35;
- this.cabinaovni.scale.x=0.35;
- this.cabinaovni.scale.y=0.35;
- this.cabinaovni.scale.z=0.35;
+ this.cuerpos.scale.x=0.3;
+ this.cuerpos.scale.y=0.3;
+ this.cuerpos.scale.z=0.3;
+ this.cuerpoi.scale.x=0.3;
+ this.cuerpoi.scale.y=0.3;
+ this.cuerpoi.scale.z=0.3;
+ this.cabinaovni.scale.x=0.4;
+ this.cabinaovni.scale.y=0.4;
+ this.cabinaovni.scale.z=0.4;
 
 }
 
@@ -140,14 +140,14 @@ Ovni.prototype.operations.RotarIzquierda = function(robot,angulo){
 function setup(){
  var mapa = new Array();
   mapa[0] = "xxxxxxxxxxxxxxxxxxxxxxxxxxxx";
-  mapa[1] = "x   r                      x";
+  mapa[1] = "x                          x";
   mapa[2] = "x                          x";
   mapa[3] = "x                          x";
-  mapa[4] = "x                          x";
+  mapa[4] = "x            r             x";
   mapa[5] = "x                          x";
-  mapa[6] = "xxxxxxxxxxxxxxxx    xxxxxxxx";
+  mapa[6] = "x                          x";
   mapa[7] = "x                          x";
-  mapa[8] = "x                          x";
+  mapa[8] = "xxxxxxxxxxxxxxxx    xxxxxxxx";
   mapa[9] = "x                          x";
  mapa[10] = "x                          x";
  mapa[11] = "x                          x";
@@ -158,17 +158,21 @@ function setup(){
  mapa[16] = "x                          x";
  mapa[17] = "x                          x";
  mapa[18] = "x                          x";
- mapa[19] = "x     r                    x";
+ mapa[19] = "x                          x";
  mapa[20] = "x                          x";
- mapa[21] = "x                          x";
+ mapa[21] = "x     r                    x";
  mapa[22] = "x                          x";
  mapa[23] = "x                          x";
- mapa[24] = "xxxxxxxxxxxxx           xxxx";
- mapa[25] = "x     r                    x";
- mapa[26] = "x                          x";
+ mapa[24] = "x                          x";
+ mapa[25] = "x                          x";
+ mapa[26] = "xxxxxxxxxxxxx           xxxx";
  mapa[27] = "x                          x";
  mapa[28] = "x                          x";
- mapa[29] = "xxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+ mapa[29] = "x                          x";
+ mapa[30] = "x     r                    x";
+ mapa[31] = "x                          x";
+ mapa[32] = "x                          x";
+ mapa[33] = "xxxxxxxxxxxxxxxxxxxxxxxxxxxx";
 
  entorno=new Environment();
  entorno.setMap(mapa);
