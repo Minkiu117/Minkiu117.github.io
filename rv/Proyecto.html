@@ -20,13 +20,13 @@
 				var near = 0.1;										//Punto mas cercano
 				var far = 20000;									//Punto mas lejano
 
-				var camara = new THREE.PerspectiveCamera(fov,aspect,near,far); //Definicionde la perspectiva de la camara 
-				camara.rotation.x = 8*Math.PI;
-				camara.position.y = 10;
-				camara.rotation.z = 8*Math.PI;											//Posicion en Z de la camara 
+				var camara = new THREE.PerspectiveCamera(); //Definicionde la perspectiva de la camara 
+				
+				camara.position.z = 10;
+														//Posicion en Z de la camara 
 
 				var renderer = new THREE.WebGLRenderer();						//Definicion del Render
-				renderer.setSize(window.innerWidth, window.innerHeight);		//Definicion del tamaño del lienzo
+				renderer.setSize(window.innerWidth*.95, window.innerHeight*.95);		//Definicion del tamaño del lienzo
 				document.body.appendChild(renderer.domElement);
 
 				///////////////////////////Generacion de las paredes/////////////////////////////////
