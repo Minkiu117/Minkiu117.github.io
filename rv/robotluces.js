@@ -176,17 +176,27 @@ function setup(){
 
  entorno=new Environment();
  entorno.setMap(mapa);
- luzPuntual = new THREE.PointLight(0xffffff);
- luzPuntual.position.x=0;  
- luzPuntual.position.y=10;
- luzPuntual.position.z=30;
+ var floor=new THREE.Mesh(new THREE.BoxGeometry(28,30,0.1), new THREE.MeshLambertMaterial({color:0x00ff00}));
+ floor.position.z=-0.5;
+ floor.position.x=-1.5;
+ floor.position.y=0.5;
+ iluminacion = new THREE.PointLight(0xffffff);
+ iluminacion.position.z=20;
+ iluminacion.position.y=10;
+
  camara=new THREE.PerspectiveCamera();
- camara.position.z=50;
+ camara.position.z=40;
  renderer = new THREE.WebGLRenderer();
  renderer.setSize(window.innerHeight*0.95, window.innerHeight*0.95);
  document.body.appendChild(renderer.domElement);
  entorno.add(camara);
- entorno.add(luzPuntual);
+ entorno.add(iluminacion);
+ entorno.add(floor);
+
+ renderer.shadowMap.enabled=true;
+ //malla.castShadow=true;
+ floor.receiveShadow=true;
+ iluminacion.castShadow=true;
 }
 
 function loop(){
@@ -197,7 +207,7 @@ function loop(){
  renderer.render(entorno,camara);
 }
 
-var entorno,luzPuntual,robot,step,angulo,camara,renderer;
+var entorno,iluminacion,robot,step,angulo,camara,renderer;
 
 setup();
 loop();
