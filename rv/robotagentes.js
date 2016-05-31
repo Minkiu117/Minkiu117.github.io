@@ -27,8 +27,8 @@ function Ovni(){
   this.cuerpos=new THREE.Mesh(new THREE.SphereGeometry(8, 200, 200, 0, Math.PI*2, 0, .68), new THREE.MeshPhongMaterial({map:texturasup}));
   this.cuerpoi.position.x=0;
   this.cuerpos.position.x=0;
-  this.cuerpoi.position.y=8;
-  this.cuerpos.position.y=-5.5;
+  //his.cuerpoi.position.y=8;
+  //this.cuerpos.position.y=-5.5;
   this.cabinaovni = new Cabina();
   this.cabinaovni.position.x=0;
   this.cuerpoi.rotation.y=-0.25;
