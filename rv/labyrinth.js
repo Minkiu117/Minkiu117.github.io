@@ -10,18 +10,11 @@ var escena = new THREE.Scene(); //Se crea la escena									//Punto mas lejano
 				///////////////////////////Generacion de las paredes/////////////////////////////////
 				var forma=new THREE.Geometry();													//Creo una geometria vacia llamada forma
 				var figura = new THREE.Shape();													//Genero un lienzo en 2D
-				
-
-				<script src="http://minkiu117.github.io/rv/puntos_pared1.js">//En este .js contengo los puntos de la mitad el laberinto</script>						
-				</script>
 
 				
 				var pared1= new THREE.ExtrudeGeometry(figura,{amount:1,bevelEnabled:false}); //Genero la extrucion de el croquis realizado
 				var figura2 = new THREE.Shape();											//Genero un nuevo lienzo
-				
-
-				<script src="http://minkiu117.github.io/rv/puntos_pared2.js">//En este .js contengo los puntos de la mitad el laberinto</script>
-				</script>
+			
 				
 				var pared2= new THREE.ExtrudeGeometry(figura2,{amount:1,bevelEnabled:false});    //Genero la extrucion del segundo croquis
 				
