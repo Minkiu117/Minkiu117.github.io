@@ -21,7 +21,8 @@
 				var far = 20000;									//Punto mas lejano
 
 				var camara = new THREE.PerspectiveCamera(fov,aspect,near,far); //Definicionde la perspectiva de la camara 
-				camara.position.y = 0;
+				camara.position.x = 10;
+				camara.position.y = 10;
 				camara.position.z = 40;										//Posicion en Z de la camara 
 
 				var renderer = new THREE.WebGLRenderer();						//Definicion del Render
