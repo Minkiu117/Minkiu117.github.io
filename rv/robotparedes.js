@@ -4,41 +4,32 @@ function Sensor(position,direction){
 }
 Sensor.prototype=new THREE.Raycaster();
 
-function BB8Cabeza(){
- THREE.Object3D.call(this);
- THREE.ImageUtils.crossOrigin = '';
- var texturahead = THREE.ImageUtils.loadTexture('http://francisgoba.github.io/rv/bb8head2.jpg');
- this.cabeza=new THREE.Mesh(new THREE.SphereGeometry    (1.15,100,50,0,Math.PI*2,3*Math.PI/2,Math.PI),new THREE.MeshPhongMaterial({map:texturahead}));
- //this.cabeza=new THREE.Mesh(new THREE.SphereGeometry    (1.15,100,50,0,Math.PI*2,3*Math.PI/2,Math.PI),new THREE.MeshPhongMaterial());
- this.cuello=new THREE.Mesh(new THREE.CylinderGeometry(1.15,1,0.2,100),new     THREE.MeshPhongMaterial({color:0xffffff}));
- this.antena1=new THREE.Mesh(new THREE.CylinderGeometry(0.02,0.02,0.8,100),new     THREE.MeshPhongMaterial({color:0xffffff}));
- this.antena2=new THREE.Mesh(new THREE.CylinderGeometry(0.02,0.02,0.5,100),new     THREE.MeshPhongMaterial({color:0xffffff}));
- this.cabeza.position.y=1.95;
- this.antena1.position.y=3.35;
- this.antena1.position.x=0.13;
- this.antena2.position.y=3.1;
- this.antena2.position.x=-0.15;
- this.cuello.position.y=1.85;
-
- this.add(this.cabeza);
- this.add(this.antena1);
- this.add(this.antena2);
- this.add(this.cuello);
+function Cabina(){
+  THREE.Object3D.call(this);
+  THREE.ImageUtils.crossOrigin = '';
+  var texturacab = new THREE.TextureLoader().load('http://minkiu117.github.io/rv/cab.jpg');
+  this.cabina=new THREE.Mesh(new THREE.SphereGeometry( 1.1, 100, 100, 0, Math.PI*2, 3*Math.PI/2, Math.PI),new THREE.MeshPhongMaterial({map:texturacab}));
+  this.antena=new THREE.Mesh(new THREE.CylinderGeometry(0.02,0.02,0.8,100),new THREE.MeshPhongMaterial({color:0xffffff}));
+  this.cabina.position.y=7.35;
+  this.antena.position.y=8.85;
+  this.add(this.cabina);
+  this.add(this.antena);
 }
 
-BB8Cabeza.prototype=new THREE.Object3D();
+Cabina.prototype=new THREE.Object3D();
 
-function BB8(x=0, y=0){
+function Ovni(x=0, y=0){
  Agent.call(this,x,y);
- THREE.ImageUtils.crossOrigin = '';
- var textura = THREE.ImageUtils.loadTexture('http://francisgoba.github.io/rv/bb8body.jpg');
- this.cuerpo=new THREE.Mesh(new THREE.SphereGeometry(2,100,100), new THREE.MeshPhongMaterial ({map:textura}));
- //this.cuerpo=new THREE.Mesh(new THREE.SphereGeometry(2,100,100), new THREE.MeshPhongMaterial ());
- this.cabezabb8 = new BB8Cabeza();
- this.cuerpo.rotation.z=-0.25; 
-
- this.add(this.cuerpo);
- this.add(this.cabezabb8);
+  THREE.ImageUtils.crossOrigin = '';
+  var texturasup = new THREE.TextureLoader().load('http://minkiu117.github.io/rv/sup.jpg');
+  var texturainf = new THREE.TextureLoader().load('http://minkiu117.github.io/rv/inf.jpg');
+  this.cuerpoi=new THREE.Mesh(new THREE.SphereGeometry(7, 200, 200, 0, Math.PI*2, Math.PI, .56), new THREE.MeshPhongMaterial({map:texturainf}));
+  this.cuerpos=new THREE.Mesh(new THREE.SphereGeometry(8, 200, 200, 0, Math.PI*2, 0, .68), new THREE.MeshPhongMaterial({map:texturasup}));
+  this.cuerpoi.position.y=14.5;
+  this.cabinaovni = new Cabina();
+  this.add(this.cuerpos)
+  this.add(this.cuerpoi)
+  this.add(this.cabinaovni);
 
  this.luzr=new THREE.SpotLight(0xffffff,4,1000,0.3);
  this.luzr.target.updateMatrixWorld();
@@ -49,19 +40,24 @@ function BB8(x=0, y=0){
  this.sensor=new Sensor();
  this.actuator=new Array();
  
- this.cuerpo.rotation.x=Math.PI/2;
- this.cabezabb8.rotation.x=Math.PI/2;
- this.cabezabb8.rotation.y=Math.PI+0.5;
- this.cuerpo.scale.x=0.5;
- this.cuerpo.scale.y=0.5;
- this.cuerpo.scale.z=0.5;
- this.cabezabb8.scale.x=0.5;
- this.cabezabb8.scale.y=0.5;
- this.cabezabb8.scale.z=0.5;
- this.cabezabb8.castShadow=true;
- this.cuerpo.castShadow=true;
+ this.cuerpos.rotation.x=Math.PI/2;
+ this.cuerpoi.rotation.x=Math.PI/2;
+ this.cabinaovni.rotation.x=Math.PI/2;
+ //this.cabinaovni.rotation.y=Math.PI+0.5;
+ this.cuerpos.scale.x=0.3;
+ this.cuerpos.scale.y=0.3;
+ this.cuerpos.scale.z=0.3;
+ this.cuerpoi.scale.x=0.3;
+ this.cuerpoi.scale.y=0.3;
+ this.cuerpoi.scale.z=0.3;
+ this.cabinaovni.scale.x=0.35;
+ this.cabinaovni.scale.y=0.35;
+ this.cabinaovni.scale.z=0.35;
+ this.cabinaovni.castShadow=true;
+ this.cuerpos.castShadow=true;
+ this.cuerpoi.castShadow=true;
 }
-BB8.prototype=new Agent();
+Ovni.prototype=new Agent();
 
 function Wall(size,x=0,y=0){
  THREE.Mesh.call(this,new THREE.BoxGeometry(size,size,size), new  THREE.MeshLambertMaterial()); 
@@ -86,12 +82,12 @@ Environment.prototype.setMap=function(map){
    if(map[i][j]==="x")
     this.add(new Wall(1, j-offset,-(i-offset)));
    else if(map[i][j]==="r")
-    this.add(new BB8(j-offset,-(i-offset)));	
+    this.add(new Ovni(j-offset,-(i-offset)));	
   }
  }
 }	
 
-BB8.prototype.sense=function(environment){
+Ovni.prototype.sense=function(environment){
  this.sensor.set(this.position, new THREE.Vector3(Math.cos(this.rotation.z),Math.sin(this.rotation.z),0));
  var obstaculo = this.sensor.intersectObjects(environment.children,true);
  if ((obstaculo.length>0&&(obstaculo[0].distance<=1))){
@@ -102,7 +98,7 @@ BB8.prototype.sense=function(environment){
   this.sensor.colision=false;
 }
 
-BB8.prototype.plan = function(environment){
+Ovni.prototype.plan = function(environment){
  this.actuator.commands=[];
  if(this.sensor.colision==true)
   this.actuator.commands.push('RotarIzquierda');
@@ -110,7 +106,7 @@ BB8.prototype.plan = function(environment){
   this.actuator.commands.push('Derecho');
 }
 
-BB8.prototype.act=function(environment){
+Ovni.prototype.act=function(environment){
  var command=this.actuator.commands.pop();
  if(command==undefined)
   console.log('Undefined command');
@@ -120,24 +116,25 @@ BB8.prototype.act=function(environment){
   console.log('Unknown command'); 
 }
 
-BB8.prototype.operations = {};
+Ovni.prototype.operations = {};
 
-BB8.prototype.operations.Derecho = function(robot,step){
+Ovni.prototype.operations.Derecho = function(robot,step){
  if(step==undefined)
   step=0.1;
  robot.position.x+=step*Math.cos(robot.rotation.z);
  robot.position.y+=step*Math.sin(robot.rotation.z);
- robot.cuerpo.rotation.z-=0.5;
+ robot.cuerpoi.rotation.z-=0.5;
+ robot.cuerpos.rotation.z-=0.5;
 };
 
-BB8.prototype.operations.RotarDerecha = function(robot,angulo){
+Ovni.prototype.operations.RotarDerecha = function(robot,angulo){
  if(angulo==undefined){
   angulo=-Math.PI/2;
  }
  robot.rotation.z+=angulo;
 };
 
-BB8.prototype.operations.RotarIzquierda = function(robot,angulo){
+Ovni.prototype.operations.RotarIzquierda = function(robot,angulo){
  if(angulo==undefined){
   angulo=Math.PI/2;
  }
