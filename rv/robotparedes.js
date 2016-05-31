@@ -56,7 +56,7 @@ Ovni.prototype=new Agent();
 function Wall(size,x=0,y=0){
  THREE.ImageUtils.crossOrigin = '';
  var texturaw = THREE.ImageUtils.loadTexture('http://minkiu117.github.io/rv/ecopiedra.jpg');   //Cargo la textura de las paredes
- texturaw.wrapS = texturap.wrapT = THREE.RepeatWrapping; 	//Defino que la imagen se repita a lo largo de la malla
+ texturaw.wrapS = texturaw.wrapT = THREE.RepeatWrapping; 	//Defino que la imagen se repita a lo largo de la malla
  texturaw.repeat.set( 10, 10 );
  texturaw.anisotropy=256;	
  THREE.Mesh.call(this,new THREE.BoxGeometry(size,size,size), new  THREE.MeshLambertMaterial({texturaw})); 
