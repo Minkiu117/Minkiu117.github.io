@@ -27,8 +27,8 @@ function Ovni(){
   this.cuerpos=new THREE.Mesh(new THREE.SphereGeometry(8, 200, 200, 0, Math.PI*2, 0, .68), new THREE.MeshPhongMaterial({map:texturasup}));
   this.cuerpoi.position.x=0;
   this.cuerpos.position.x=0;
-  this.cuerpoi.position.y=8;
-  this.cuerpos.position.y=-5.5;
+  //this.cuerpoi.position.y=8;
+  //this.cuerpos.position.y=-5.5;
   this.cabinaovni = new Cabina();
   this.cabinaovni.position.x=0;
   this.cuerpoi.rotation.y=-0.25;
@@ -122,10 +122,10 @@ Ovni.prototype.operations = {};
 Ovni.prototype.operations.Derecho = function(robot,step){
  if(step==undefined)
   step=0.1;
- //robot.position.x+=step*Math.cos(robot.rotation.z);
- //robot.position.y+=step*Math.sin(robot.rotation.z);
- //robot.cuerpoi.rotation.y-=0.5;
- //robot.cuerpos.rotation.y-=0.5;
+ robot.position.x+=step*Math.cos(robot.rotation.z);
+ robot.position.y+=step*Math.sin(robot.rotation.z);
+ robot.cuerpoi.rotation.y-=0.5;
+ robot.cuerpos.rotation.y-=0.5;
 };
 
 Ovni.prototype.operations.RotarDerecha = function(robot,angulo){
