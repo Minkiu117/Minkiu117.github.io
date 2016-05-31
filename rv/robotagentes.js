@@ -26,7 +26,6 @@ function Ovni(x=0, z=0){
   this.cuerpoi=new THREE.Mesh(new THREE.SphereGeometry(7, 200, 200, 0, Math.PI*2, Math.PI, .56), new THREE.MeshPhongMaterial({map:texturainf}));
   this.cuerpos=new THREE.Mesh(new THREE.SphereGeometry(8, 200, 200, 0, Math.PI*2, 0, .68), new THREE.MeshPhongMaterial({map:texturasup}));
   this.cuerpoi.position.y=13.5;
-  //this.cuerpos.position.y=-5.5;
   this.cabinaovni = new Cabina();
   this.add(this.cuerpos)
   this.add(this.cuerpoi)
@@ -40,15 +39,15 @@ function Ovni(x=0, z=0){
  this.cuerpoi.rotation.x=Math.PI/2;
  this.cabinaovni.rotation.x=Math.PI/2;
  //this.cabinaovni.rotation.y=Math.PI+0.5;
- this.cuerpos.scale.x=0.3;
- this.cuerpos.scale.y=0.3;
- this.cuerpos.scale.z=0.3;
- this.cuerpoi.scale.x=0.3;
- this.cuerpoi.scale.y=0.3;
- this.cuerpoi.scale.z=0.3;
- this.cabinaovni.scale.x=0.3;
- this.cabinaovni.scale.y=0.3;
- this.cabinaovni.scale.z=0.3;
+ this.cuerpos.scale.x=0.35;
+ this.cuerpos.scale.y=0.35;
+ this.cuerpos.scale.z=0.35;
+ this.cuerpoi.scale.x=0.35;
+ this.cuerpoi.scale.y=0.35;
+ this.cuerpoi.scale.z=0.35;
+ this.cabinaovni.scale.x=0.35;
+ this.cabinaovni.scale.y=0.35;
+ this.cabinaovni.scale.z=0.35;
 
 }
 
