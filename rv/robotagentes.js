@@ -25,6 +25,8 @@ function Ovni(){
   var texturainf = new THREE.TextureLoader().load('http://minkiu117.github.io/rv/inf.jpg');
   this.cuerpoi=new THREE.Mesh(new THREE.SphereGeometry(7, 200, 200, 0, Math.PI*2, Math.PI, .56), new THREE.MeshPhongMaterial({map:texturainf}));
   this.cuerpos=new THREE.Mesh(new THREE.SphereGeometry(8, 200, 200, 0, Math.PI*2, 0, .68), new THREE.MeshPhongMaterial({map:texturasup}));
+  this.cuerpoi.position.z=0;
+  this.cuerpos.position.z=0;
   this.cuerpoi.position.y=8;
   this.cuerpos.position.y=-5.5;
   this.cabinaovni = new Cabina();
@@ -38,18 +40,19 @@ function Ovni(){
  //this.sensor2=new Sensor();
  this.actuator=new Array();
  
-
+ this.cuerpo.rotation.x=Math.PI/2;
+ this.cabezabb8.rotation.x=Math.PI/2;
  this.cabinaovni.rotation.x=Math.PI/2;
  this.cabinaovni.rotation.y=Math.PI+0.5;
- this.cuerpos.scale.x=0.2;
- this.cuerpos.scale.y=0.2;
- this.cuerpos.scale.z=0.2;
- this.cuerpoi.scale.x=0.2;
- this.cuerpoi.scale.y=0.2;
- this.cuerpoi.scale.z=0.2;
- this.cabinaovni.scale.x=0.2;
- this.cabinaovni.scale.y=0.2;
- this.cabinaovni.scale.z=0.2;
+ this.cuerpos.scale.x=0.3;
+ this.cuerpos.scale.y=0.3;
+ this.cuerpos.scale.z=0.3;
+ this.cuerpoi.scale.x=0.3;
+ this.cuerpoi.scale.y=0.3;
+ this.cuerpoi.scale.z=0.3;
+ this.cabinaovni.scale.x=0.3;
+ this.cabinaovni.scale.y=0.3;
+ this.cabinaovni.scale.z=0.3;
 }
 
 Ovni.prototype=new Agent();
@@ -79,7 +82,7 @@ Ovni.prototype.sense=function(environment){
  //this.sensor2.set(this.position, new THREE.Vector3(Math.sin(this.rotation.z),Math.cos(this.rotation.z),0));
  var obstaculo = this.sensor.intersectObjects(environment.children,true);
  //var obstaculo2 = this.sensor2.intersectObjects(environment.children,true);
- if ((obstaculo.length>0&&(obstaculo[0].distance<=1)))
+ if ((obstaculo.length>0&&(obstaculo[0].distance<=2)))
   this.sensor.colision=true;
  else
   this.sensor.colision=false;
