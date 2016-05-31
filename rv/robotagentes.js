@@ -30,6 +30,7 @@ function Ovni(){
   this.cuerpoi.position.y=8;
   this.cuerpos.position.y=-5.5;
   this.cabinaovni = new Cabina();
+  this.cabinaovni.position.z=0;
   this.cuerpoi.rotation.y=-0.25;
   this.cuerpos.rotation.y=-0.25;
   this.add(this.cuerpos)
