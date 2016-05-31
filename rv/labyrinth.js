@@ -25,7 +25,7 @@ function Ovni(x=0, y=0){
   var texturainf = new THREE.TextureLoader().load('http://minkiu117.github.io/rv/inf.jpg');
   this.cuerpoi=new THREE.Mesh(new THREE.SphereGeometry(7, 200, 200, 0, Math.PI*2, Math.PI, .56), new THREE.MeshPhongMaterial({map:texturainf}));
   this.cuerpos=new THREE.Mesh(new THREE.SphereGeometry(8, 200, 200, 0, Math.PI*2, 0, .68), new THREE.MeshPhongMaterial({map:texturasup}));
-  this.cuerpoi.position.y=5;
+  this.cuerpoi.position.y=10;
   this.cabinaovni = new Cabina();
   this.add(this.cuerpos)
   this.add(this.cuerpoi)
@@ -188,9 +188,9 @@ function setup(){
  floor.position.x=-1.5;
  floor.position.y=0.5;
  iluminacion = new THREE.PointLight(0xffffff);
- iluminacion.position.z=10;
- iluminacion.position.y=10;
- iluminacion.position.x=10;
+ iluminacion.position.z=0;
+ iluminacion.position.y=0;
+ iluminacion.position.x=0;
  
  camara=new THREE.PerspectiveCamera();
  camara.position.z=40;
