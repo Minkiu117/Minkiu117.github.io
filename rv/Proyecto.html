@@ -88,11 +88,16 @@
 			  var capturarp=false;
   			window.addEventListener(tipo_evento,listener,capturarp);
 				
-			
+			////////////////////////////////////Configuaracion de sensores///////////////////////////////////////
+			var reloj = new THREE.Clock();
+		  	var controles = new THREE.FirstPersonControls(camara);
+			  controles.movementSpeed = 3;
+			  controles.lookSpeed =0.025;
+			  controles.lookVertical = false;
 
 				////////////////////////////////////////funcion de renderizado////////////////////////////////////////
 				function render(){
-					//controles.update(reloj.getDelta());
+					controles.update(reloj.getDelta());
 					requestAnimationFrame(render);														//Actualiza los controles
 					renderer.render(escena,camara);										//Actualiza la escena y la camara
 				}
