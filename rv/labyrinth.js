@@ -183,7 +183,9 @@ function setup(){
 
  entorno=new Environment();
  entorno.setMap(mapa);
- var floor=new THREE.Mesh(new THREE.BoxGeometry(34,36,0.1), new THREE.MeshLambertMaterial({color:0x00ff00}));
+ THREE.ImageUtils.crossOrigin = '';
+ var texturap = new THREE.TextureLoader().load('http://minkiu117.github.io/rv/piso2.jpg');
+ var floor=new THREE.Mesh(new THREE.BoxGeometry(34,36,0.1), new THREE.MeshLambertMaterial({map:texturap}));
  floor.position.z=-0.5;
  floor.position.x=-1.5;
  floor.position.y=0.5;
