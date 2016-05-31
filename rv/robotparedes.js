@@ -55,10 +55,7 @@ Ovni.prototype=new Agent();
 
 function Wall(size,x=0,y=0){
  THREE.ImageUtils.crossOrigin = '';
- var texturaw = THREE.ImageUtils.loadTexture('http://minkiu117.github.io/rv/ecopiedra.jpg');   //Cargo la textura de las paredes
- texturaw.wrapS = texturaw.wrapT = THREE.RepeatWrapping; 	//Defino que la imagen se repita a lo largo de la malla
- texturaw.repeat.set( 10, 10 );
- texturaw.anisotropy=256;	
+ var texturaw = THREE.ImageUtils.loadTexture('http://minkiu117.github.io/rv/ecopiedra.jpg');  
  THREE.Mesh.call(this,new THREE.BoxGeometry(size,size,size), new  THREE.MeshLambertMaterial({texturaw})); 
  this.size=size;
  this.position.x=x;
@@ -91,7 +88,9 @@ Ovni.prototype.sense=function(environment){
  var obstaculo = this.sensor.intersectObjects(environment.children,true);
  if ((obstaculo.length>0&&(obstaculo[0].distance<=2.2))){
   this.sensor.colision=true;
-  obstaculo[0].object.material=new THREE.MeshBasicMaterial({color:0xffff00});}
+ THREE.ImageUtils.crossOrigin = '';
+ var texturac = THREE.ImageUtils.loadTexture('http://minkiu117.github.io/rv/cesped.jpg'); 
+  obstaculo[0].object.material=new THREE.MeshBasicMaterial({map:texturac});}
  else
   this.sensor.colision=false;
 }
@@ -175,11 +174,11 @@ function setup(){
  entorno=new Environment();
  entorno.setMap(mapa);
  THREE.ImageUtils.crossOrigin = '';
- var texturap = THREE.ImageUtils.loadTexture('http://minkiu117.github.io/rv/piso2.jpg');   //Cargo la textura de las paredes
- texturap.wrapS = texturap.wrapT = THREE.RepeatWrapping; 	//Defino que la imagen se repita a lo largo de la malla
+ var texturap = THREE.ImageUtils.loadTexture('http://minkiu117.github.io/rv/piso2.jpg');   
+ texturap.wrapS = texturap.wrapT = THREE.RepeatWrapping; 	
  texturap.repeat.set( 10, 10 );
  texturap.anisotropy=256;										//resalta el detalle de la textura
- var floor=new THREE.Mesh(new THREE.BoxGeometry(28,30,0.1), new THREE.MeshLambertMaterial({map:texturap}));//Creo el material de la pared tipo Lambert con la textura dada
+ var floor=new THREE.Mesh(new THREE.BoxGeometry(28,30,0.1), new THREE.MeshLambertMaterial({map:texturap}));
  floor.position.z=-0.5;
  floor.position.x=-1.5;
  floor.position.y=0.5;
