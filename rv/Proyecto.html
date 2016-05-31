@@ -21,7 +21,7 @@
 				var far = 20000;									//Punto mas lejano
 
 				var camara = new THREE.PerspectiveCamera(fov,aspect,near,far); //Definicionde la perspectiva de la camara 
-				camara.position.y = 10;
+				camara.position.y = 20;
 														//Posicion en Z de la camara 
 
 				var renderer = new THREE.WebGLRenderer();						//Definicion del Render
@@ -55,8 +55,7 @@
 				var material= new THREE.MeshLambertMaterial({map: paredTextura});//Creo el material de la pared tipo Lambert con la textura dada
 				paredTextura.repeat.set( 0.5, 1);					//defines el numero de veces que se repide la textura en la malla
 				var pared = new THREE.Mesh(forma,material);         //Crea la malla con la geometria de las paredes y el material de las mismas
-				pared.scale.set(1,1,4);								//Define la altura de la pared
-	     		pared.rotation.x = 3*Math.PI / 2;						//roto el laberinto a ubicarse en el posicion co respecto a la camara
+				pared.scale.set(1,1,4);							//roto el laberinto a ubicarse en el posicion co respecto a la camara
 	      		pared.rotation.y = 3*Math.PI/2;
 	      		escena.add(pared);									//agrego la pared a la escena
 				
@@ -66,8 +65,7 @@
 			    pisoTextura.repeat.set( 10, 10 );												//defino el nuero de veces que se repitira
 			    var pisoMaterial = new THREE.MeshLambertMaterial( { map: pisoTextura, side: THREE.DoubleSide } ); //Crea el material del piso
 			    var pisoGeometry = new THREE.PlaneGeometry(50, 50, 1, 1);						//Crea un plano que se ocupara de piso
-			    var piso = new THREE.Mesh(pisoGeometry, pisoMaterial);							//Se crea la malla del piso
-			    piso.rotation.x = 3*Math.PI / 2;													//Se alinea con las paredes
+			    var piso = new THREE.Mesh(pisoGeometry, pisoMaterial);													//Se alinea con las paredes
 			    piso.rotation.y = 3*Math.PI/2;
 			    escena.add(piso);																//Se agrega a la escena
 					
