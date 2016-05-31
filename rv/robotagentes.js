@@ -121,8 +121,8 @@ Ovni.prototype.operations = {};
 Ovni.prototype.operations.Derecho = function(robot,step){
  if(step==undefined)
   step=0.1;
- robot.position.x+=step*Math.cos(robot.rotation.z);
- robot.position.y+=step*Math.sin(robot.rotation.z);
+ //robot.position.x+=step*Math.cos(robot.rotation.z);
+ //robot.position.y+=step*Math.sin(robot.rotation.z);
  robot.cuerpoi.rotation.y-=0.5;
  robot.cuerpos.rotation.y-=0.5;
 };
