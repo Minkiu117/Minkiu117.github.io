@@ -30,12 +30,6 @@ function Ovni(x=0, y=0){
   this.add(this.cuerpos)
   this.add(this.cuerpoi)
   this.add(this.cabinaovni);
-
- this.luzr=new THREE.SpotLight(0xffffff,4,1000,0.3);
- this.luzr.target.updateMatrixWorld();
- this.luzr.target.position.set(10,0,0);
- this.add(this.luzr);
- this.add(this.luzr.target);
  
  this.sensor=new Sensor();
  this.actuator=new Array();
@@ -143,11 +137,11 @@ Ovni.prototype.operations.RotarIzquierda = function(robot,angulo){
 function setup(){
  var mapa = new Array();
    mapa[0] = "xxxxxxxxxxxxxxxxxxxxxxxxxxxx";
-   mapa[1] = "x                          x";
-   mapa[2] = "x                          x";
-   mapa[3] = "x                          x";
-   mapa[4] = "x                          x";
-   mapa[5] = "x                          x";
+   mapa[1] = "x      x                   x";
+   mapa[2] = "x      x                   x";
+   mapa[3] = "x             x            x";
+   mapa[4] = "x             x            x";
+   mapa[5] = "xxxxxxxxxxxxxxx            x";
    mapa[6] = "x                          x";
    mapa[7] = "x                          x";
    mapa[8] = "x                          x";
