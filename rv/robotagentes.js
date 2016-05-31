@@ -78,7 +78,7 @@ Ovni.prototype.sense=function(environment){
  //this.sensor2.set(this.position, new THREE.Vector3(Math.sin(this.rotation.z),Math.cos(this.rotation.z),0));
  var obstaculo = this.sensor.intersectObjects(environment.children,true);
  //var obstaculo2 = this.sensor2.intersectObjects(environment.children,true);
- if ((obstaculo.length>0&&(obstaculo[0].distance<=1)))
+ if ((obstaculo.length>0&&(obstaculo[0].distance<=2)))
   this.sensor.colision=true;
  else
   this.sensor.colision=false;
@@ -179,7 +179,7 @@ function setup(){
  luzPuntual = new THREE.PointLight(0xffffff);
  luzPuntual.position.x=0;  
  luzPuntual.position.y=10;
- luzPuntual.position.z=50;
+ luzPuntual.position.z=30;
  camara=new THREE.PerspectiveCamera();
  camara.position.z=50;
  renderer = new THREE.WebGLRenderer();
