@@ -578,4 +578,7 @@ figura2.moveTo(-22,25);
 					renderer.render(escena,camara);										//Actualiza la escena y la camara
 				}
 				
+				var entorno,iluminacion,robot,step,angulo,camara,renderer;
+
+				
 				render();	
