@@ -563,69 +563,6 @@ figura2.moveTo(-22,25);
 			  var capturarp=false;
   			window.addEventListener(tipo_evento,listener,capturarp);
 			
-			Ovni.prototype.sense=function(escena){
-			 this.sensor.set(this.position, new THREE.Vector3(Math.cos(this.rotation.z),Math.sin(this.rotation.z),0));
-			 //this.sensor2.set(this.position, new THREE.Vector3(Math.sin(this.rotation.z),Math.cos(this.rotation.z),0));
-			 var obstaculo = this.sensor.intersectObjects(escena.children,true);
-			 //var obstaculo2 = this.sensor2.intersectObjects(environment.children,true);
-			 if ((obstaculo.length>0&&(obstaculo[0].distance<=2.2)))
-			  this.sensor.colision=true;
-			 else
-			  this.sensor.colision=false;
-			 /*if((obstaculo2.length>0&&(obstaculo2[0].distance<=1)))
-			  this.sensor2.colision=true;
-			 else
-			  this.sensor2.colision=false;*/
-			}
-			
-			Ovni.prototype.plan = function(escena){
-			 this.actuator.commands=[];
-			 /*if(this.sensor.colision==false && this.sensor2.colision==true)
-			  this.actuator.commands.push('Derecho');
-			 else if(this.sensor.colision==true && this.sensor2.colision==true)
-			   this.actuator.commands.push('RotarDerecha');
-			 else
-			   this.actuator.commands.push('RotarIzquierda');*/
-			  if(this.sensor.colision==true)
-			   this.actuator.commands.push('RotarIzquierda');
-			  else
-			   this.actuator.commands.push('Derecho');
-			}
-			
-			Ovni.prototype.act=function(escena){
-			 var command=this.actuator.commands.pop();
-			 if(command==undefined)
-			  console.log('Undefined command');
-			 else if(command in this.operations)
-			  this.operations[command](this);
-			 else
-			  console.log('Unknown command'); 
-			}
-			
-			Ovni.prototype.operations = {};
-			
-			Ovni.prototype.operations.Derecho = function(robot,step){
-			 if(step==undefined)
-			  step=0.3;
-			 robot.position.x+=step*Math.cos(robot.rotation.z);
-			 robot.position.y+=step*Math.sin(robot.rotation.z);
-			 robot.cuerpoi.rotation.y-=0.5;
-			 robot.cuerpos.rotation.y-=0.5;
-			};
-			
-			Ovni.prototype.operations.RotarDerecha = function(robot,angulo){
-			 if(angulo==undefined){
-			  angulo=-Math.PI/2;
-			 }
-			 robot.rotation.z+=angulo;
-			};
-			
-			Ovni.prototype.operations.RotarIzquierda = function(robot,angulo){
-			 if(angulo==undefined){
-			  angulo=Math.PI/2;
-			 }
-			 robot.rotation.z+=angulo;
-			};	
 			////////////////////////////////////Configuaracion de sensores///////////////////////////////////////
 			var reloj = new THREE.Clock();
 			var controles = new THREE.FirstPersonControls(camara);
