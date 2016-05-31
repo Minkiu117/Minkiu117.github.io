@@ -183,12 +183,12 @@ function setup(){
 
  entorno=new Environment();
  entorno.setMap(mapa);
- var floor=new THREE.Mesh(new THREE.BoxGeometry(28,30,0.1), new THREE.MeshLambertMaterial({color:0x00ff00}));
+ var floor=new THREE.Mesh(new THREE.BoxGeometry(34,36,0.1), new THREE.MeshLambertMaterial({color:0x00ff00}));
  floor.position.z=-1.5;
  floor.position.x=-3.5;
  floor.position.y=0.5;
  iluminacion = new THREE.PointLight(0xffffff);
- iluminacion.position.z=20;
+ iluminacion.position.z=0;
  iluminacion.position.y=10;
  
  camara=new THREE.PerspectiveCamera();
