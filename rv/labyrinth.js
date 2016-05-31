@@ -184,11 +184,10 @@ function setup(){
  entorno=new Environment();
  entorno.setMap(mapa);
  THREE.ImageUtils.crossOrigin = '';
- var paredTextura = THREE.ImageUtils.loadTexture('texturas/ecopiedra.jpg');   //Cargo la textura de las paredes
-	paredTextura.wrapS = paredTextura.wrapT = THREE.RepeatWrapping; 	//Defino que la imagen se repita a lo largo de la malla 
-	paredTextura.anisotropy=256;										//resalta el detalle de la textura
-	var floor= new THREE.MeshLambertMaterial({map: paredTextura});//Creo el material de la pared tipo Lambert con la textura dada
-	paredTextura.repeat.set( 0.5, 1);
+ var texturap = THREE.ImageUtils.loadTexture('texturas/ecopiedra.jpg');   //Cargo la textura de las paredes
+texturap.wrapS = texturap.wrapT = THREE.RepeatWrapping; 	//Defino que la imagen se repita a lo largo de la malla 
+texturap.anisotropy=256;										//resalta el detalle de la textura
+var floor= new THREE.MeshLambertMaterial({map:texturap});//Creo el material de la pared tipo Lambert con la textura dada
  floor.position.z=-0.5;
  floor.position.x=-1.5;
  floor.position.y=0.5;
