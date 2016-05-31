@@ -181,7 +181,7 @@ function setup(){
  floor.position.z=-0.5;
  floor.position.x=-3.5;
  floor.position.y=0.5;
- iluminacion = new THREE.PointLight(0xffffff,10,150);
+ iluminacion = new THREE.PointLight(0xffffff,1,150);
  iluminacion.position.set(50,50,50)
 
  camara=new THREE.PerspectiveCamera();
