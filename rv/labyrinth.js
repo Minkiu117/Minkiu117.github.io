@@ -568,7 +568,6 @@ figura2.moveTo(-22,25);
 			var controles = new THREE.FirstPersonControls(camara);
 			  controles.movementSpeed = 0.4;
 			  controles.lookSpeed =0.25;
-			  controles.lookVertical = false;
 		  	
 
 				////////////////////////////////////////funcion de renderizado////////////////////////////////////////
