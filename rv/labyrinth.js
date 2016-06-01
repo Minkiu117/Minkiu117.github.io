@@ -197,11 +197,17 @@ Ovni.prototype.operations.Izquierda = function(robot,angulo){
 }
 
 Ovni.prototype.operations.Atras = function(robot,angulo){
- if(angulo==undefined){
-  angulo=Math.PI/2;
- }
- robot.rotation.z+=angulo;
-};
+ if(angulo==undefined)
+  step=0.01;
+ Metay=18.5
+ Metax=12.5
+ stepx=(Metax-3+robot.position.x);
+ stepy=(Metay-3+robot.position.y);
+ robot.position.x+=step*stepx;
+ robot.position.y+=step*stepy;
+ robot.cuerpoi.rotation.y-=0.5;
+ robot.cuerpos.rotation.y-=0.5;
+}
 
 
 
@@ -210,7 +216,7 @@ function setup(){
    mapa[0] = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx    x";
    mapa[1] = "x         x           x          x";
    mapa[2] = "x         x           x          x";
-   mapa[3] = "x         x           x          x";
+   mapa[3] = "x    r    x           x          x";
    mapa[4] = "x         x           x          x";
    mapa[5] = "x         x           x          x";
    mapa[6] = "x         xxxxxxxxxxxxx          x";
