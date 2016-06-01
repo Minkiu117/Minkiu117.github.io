@@ -129,7 +129,9 @@ Ovni.prototype.sense=function(environment){
 }
 
 Ovni.prototype.plan = function(environment){
- console.log(this.sensor.colision)
+ stepy=((Metay-Ovni.position.y));
+ stepx=((Metax-Ovni.position.x));
+ console.log(stepy,stepx)
  this.actuator.commands=[];
  if(this.sensor.colision===0)
   this.actuator.commands.push('Derecho');
@@ -154,8 +156,8 @@ Ovni.prototype.operations = {};
 Ovni.prototype.operations.Derecho = function(robot,step){
  if(step==undefined)
   step=0.1;
- robot.position.x+=step*Math.cos(robot.rotation.z);
- robot.position.y+=step*Math.sin(robot.rotation.z);
+ robot.position.x+=step*stepx);
+ robot.position.y+=step*stepy);
  robot.cuerpoi.rotation.y-=0.5;
  robot.cuerpos.rotation.y-=0.5;
 };
