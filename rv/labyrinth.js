@@ -31,21 +31,21 @@ function Ovni(x=0, y=0){
   this.add(this.cuerpoi)
   this.add(this.cabinaovni);
 
- this.luzrf=new THREE.SpotLight(0x12ac24,4,15,0.3);
+ this.luzrf=new THREE.SpotLight(0x12ac24,4,10,0.3);
  this.luzrf.target.updateMatrixWorld();
  this.luzrf.shadow;
  this.luzrf.target.position.set(10,0,0);
  this.add(this.luzrf);
  this.add(this.luzrf.target);
  
- this.luzri=new THREE.SpotLight(0x12ac24,4,15,0.3);
+ this.luzri=new THREE.SpotLight(0x12ac24,4,10,0.3);
  this.luzri.target.updateMatrixWorld();
  this.luzri.shadow;
  this.luzri.target.position.set(0,10,0);
  this.add(this.luzri);
  this.add(this.luzri.target);
  
- this.luzrd=new THREE.SpotLight(0x12ac24,4,15,0.3);
+ this.luzrd=new THREE.SpotLight(0x12ac24,4,10,0.3);
  this.luzrd.target.updateMatrixWorld();
  this.luzrd.shadow;
  this.luzrd.target.position.set(0,-10,0);
@@ -110,7 +110,7 @@ Ovni.prototype.sense=function(environment){
  if ((obstaculo.length>0&&(obstaculo[0].distance<=2.2))){
   this.sensor.colision=true;
   THREE.ImageUtils.crossOrigin = '';
-  var texturac = THREE.ImageUtils.loadTexture('http://minkiu117.github.io/rv/lava.jpg'); 
+  var texturac = THREE.ImageUtils.loadTexture('http://minkiu117.github.io/rv/magma.jpg'); 
   obstaculo[0].object.material=new THREE.MeshBasicMaterial({map:texturac});}
  else
   this.sensor.colision=false;
