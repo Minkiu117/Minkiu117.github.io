@@ -181,7 +181,7 @@ Ovni.prototype.operations.Derecha = function(robot,angulo){
  if(angulo==undefined)
  if(robot.position.x<=0.1){
  step=2;
- Metax=0
+ Metax=-12
  stepx=(Metax-robot.position.x);
  robot.position.x+=step*stepx;}
  else{
