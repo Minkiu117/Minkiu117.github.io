@@ -183,7 +183,7 @@ Ovni.prototype.operations.Derecha = function(robot,angulo){
  Metax=12.5
  stepx=(Metax-robot.position.x);
  stepy=(Metay-robot.position.y);
- if(stepy>0.1){
+ if(stepy>0.5){
  if(stepx<=0.1){
  step=.4;
  Metax=0
