@@ -162,6 +162,19 @@ Environment.prototype.setMap=function(map){
  }
 }	
 
+this.sensar = function(escena){ 
+        theta = this.rotation.y-Math.PI;
+        _raycaster.set(this.position,new THREE.Vector3(-Math.sin(theta),Math.cos(theta),0));
+        var obstaculo1=_raycaster.intersectObjects(escena.children);
+        _raycaster.set(this.position, new THREE.Vector3(Math.sin(theta),-Math.cos(theta),0));
+        var obstaculo2=_raycaster.intersectObjects(escena.children);
+        _raycaster.set(this.position,new THREE.Vector3(Math.cos(theta),Math.sin(theta),0));
+        var obstaculo3=_raycaster.intersectObjects(escena.children);
+        _raycaster.set(this.position, new THREE.Vector3(-Math.cos(theta),-Math.sin(theta),0));
+        var obstaculo4=_raycaster.intersectObjects(escena.children);
+        var limite=1.1;
+}
+
 
 function setup(){
  var mapa = new Array();
