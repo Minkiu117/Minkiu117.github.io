@@ -109,9 +109,9 @@ Environment.prototype.setMap=function(map){
 
 Ovni.prototype.sense=function(environment){
  theta = this.rotation.z;
- this.sensor.set(this.position,new THREE.Vector3(Math.sin(theta),Math.cos(theta),0));
+ this.sensor.set(this.position,new THREE.Vector3(Math.cos(theta),Math.sin(theta),0));
  var obstaculo1= this.sensor.intersectObjects(environment.children);
- this.sensor.set(this.position, new THREE.Vector3(Math.sin(theta),-Math.cos(theta),0));
+ this.sensor.set(this.position, new THREE.Vector3(Math.cos(theta),-Math.sin(theta),0));
  var obstaculo2= this.sensor.intersectObjects(environment.children);
  this.sensor.set(this.position,new THREE.Vector3(-Math.cos(theta),Math.sin(theta),0));
  var obstaculo3= this.sensor.intersectObjects(environment.children);
