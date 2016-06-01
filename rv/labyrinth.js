@@ -198,11 +198,11 @@ Ovni.prototype.operations.Izquierda = function(robot,angulo){
 
 Ovni.prototype.operations.Atras = function(robot,angulo){
  if(angulo==undefined)
-  step=0.01;
- Metay=18.5
- Metax=12.5
- stepx=(Metax-3+robot.position.x);
- stepy=(Metay-3+robot.position.y);
+  step=0.1;
+ Metay=0
+ Metax=0
+ stepx=(Metax-robot.position.x);
+ stepy=(Metay-robot.position.y);
  robot.position.x+=step*stepx;
  robot.position.y+=step*stepy;
  robot.cuerpoi.rotation.y-=0.5;
