@@ -194,7 +194,7 @@ Ovni.prototype.operations.Izquierda = function(robot,angulo){
 Ovni.prototype.operations.Atras = function(robot,angulo){
  if(angulo==undefined)
  
-}
+
 
 
 function setup(){
