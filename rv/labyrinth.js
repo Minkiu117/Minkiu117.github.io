@@ -116,18 +116,21 @@ Ovni.prototype.sense=function(environment){
  var obstaculo3= this.sensor.intersectObjects(environment.children);
  this.sensor.set(this.position, new THREE.Vector3(-Math.cos(theta),-Math.sin(theta),0));
  var obstaculo4= this.sensor.intersectObjects(environment.children);
- var limite=1;
- if((obstaculo3.length >0 && (obstaculo3[0].distance <= limite))){
-   var texturac = THREE.ImageUtils.loadTexture('http://minkiu117.github.io/rv/magma.jpg'); 
-   obstaculo3[0].object.material=new THREE.MeshBasicMaterial({map:texturac});
-   this.sensor.colision= 1;}
- else if((obstaculo1.length >0 && (obstaculo1[0].distance <= limite))){
-   this.sensor.colision= 2;}
- else if((obstaculo2.length >0 && (obstaculo2[0].distance <= limite))){
-   this.sensor.colision= 3;}
- else{
-   this.sensor.colision = 0;
- }
+ var limite=2.2;
+ if((obstaculo1.length >0 && (obstaculo1[0].distance <= limite)))
+        {
+          if((obstaculo3.length >0 && (obstaculo3[0].distance <= limite)))
+            this.sensor.colision= 1;
+          else{
+            if((obstaculo4.length >0 && (obstaculo4[0].distance <= limite)))
+              this.sensor.colision= 2;
+            else{
+              this.sensor.colision= 3;
+            }
+          }
+        }
+        else
+          this.sensor.colision = 0;
 }
 
 Ovni.prototype.plan = function(environment){
