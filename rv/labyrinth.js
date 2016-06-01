@@ -114,19 +114,14 @@ Ovni.prototype.sense=function(environment){
  var obstaculo2= this.sensor.intersectObjects(environment.children);
  this.sensor.set(this.position,new THREE.Vector3(Math.cos(theta),Math.sin(theta),0));
  var obstaculo3= this.sensor.intersectObjects(environment.children);
- this.sensor.set(this.position, new THREE.Vector3(-Math.cos(theta),-Math.sin(theta),0));
- var obstaculo4= this.sensor.intersectObjects(environment.children);
  var limite=5;
  if((obstaculo1.length >0 && (obstaculo1[0].distance <= limite)))
         {
           if((obstaculo3.length >0 && (obstaculo3[0].distance <= limite)))
             this.sensor.colision= 1;
           else{
-            if((obstaculo4.length >0 && (obstaculo4[0].distance <= limite)))
               this.sensor.colision= 2;
-            else{
-              this.sensor.colision= 3;
-            }
+            
           }
         }
         else
@@ -141,8 +136,6 @@ Ovni.prototype.plan = function(environment){
   this.actuator.commands.push('RotarDerecha');
  else if(this.sensor.colision==2)
   this.actuator.commands.push('RotarIzquierda');
- else if(this.sensor.colision==3)
-  this.actuator.commands.push('Atras');
 }
 
 Ovni.prototype.act=function(environment){
@@ -173,32 +166,12 @@ Ovni.prototype.operations.RotarDerecha = function(robot,angulo){
  robot.rotation.z+=angulo;
 };
 
-Ovni.prototype.operations.Atras = function(robot,angulo){
- if(angulo==undefined){
-  angulo=-Math.PI;
- }
- robot.rotation.z+=angulo;
-};
-
 Ovni.prototype.operations.RotarIzquierda = function(robot,angulo){
  if(angulo==undefined){
   angulo=Math.PI/2;
  }
  robot.rotation.z+=angulo;
 };
-
-this.sensar = function(escena){ 
-        theta = this.rotation.y-Math.PI;
-        _raycaster.set(this.position,new THREE.Vector3(-Math.sin(theta),Math.cos(theta),0));
-        var obstaculo1=_raycaster.intersectObjects(escena.children);
-        _raycaster.set(this.position, new THREE.Vector3(Math.sin(theta),-Math.cos(theta),0));
-        var obstaculo2=_raycaster.intersectObjects(escena.children);
-        _raycaster.set(this.position,new THREE.Vector3(Math.cos(theta),Math.sin(theta),0));
-        var obstaculo3=_raycaster.intersectObjects(escena.children);
-        _raycaster.set(this.position, new THREE.Vector3(-Math.cos(theta),-Math.sin(theta),0));
-        var obstaculo4=_raycaster.intersectObjects(escena.children);
-        var limite=1.1;
-}
 
 
 function setup(){
