@@ -163,30 +163,6 @@ Environment.prototype.setMap=function(map){
 }	
 
 
-
-Ovni.prototype.act=function(environment){
- var command=this.actuator.commands.pop();
- if(command==undefined)
-  console.log('Undefined command');
- else if(command in this.operations)
-  this.operations[command](this);
- else
-  console.log('Unknown command'); 
-}
-
-Ovni.prototype.operations = {};
-
-Ovni.prototype.operations.Derecho = function(robot,step){
- if(step==undefined)
-  step=0.1;
- robot.position.x+=step*Math.cos(robot.rotation.z);
- robot.position.y+=step*Math.sin(robot.rotation.z);
- console.log(robot.position.x);
- console.log(robot.position.y);
- robot.cuerpoi.rotation.y-=0.5;
- robot.cuerpos.rotation.y-=0.5;
-};
-
 function setup(){
  var mapa = new Array();
    mapa[0] = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
