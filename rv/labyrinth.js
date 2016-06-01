@@ -117,7 +117,7 @@ Ovni.prototype.sense=function(environment){
   obstaculo[0].object.material=new THREE.MeshBasicMaterial({map:texturaw2});}
  else
   this.sensor.colision=false;
-
+}
 
 
 Ovni.prototype.plan = function(environment){
