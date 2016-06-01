@@ -1,6 +1,6 @@
 function Sensor(position,direction){
   theta = Math.PI/3;
-  var _raycaster=new THREE.Raycaster(this.position,new THREE.Vector3(1,0,0));
+  var _raycaster=new THREE.Raycaster(this.position,new THREE.Vector3(0,0,0));
         _raycaster.set(this.position,new THREE.Vector3(-Math.sin(theta),Math.cos(theta),0));
         var obstaculo1=_raycaster.intersectObjects(environment.children);
         _raycaster.set(this.position, new THREE.Vector3(Math.sin(theta),-Math.cos(theta),0));
