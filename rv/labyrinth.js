@@ -143,8 +143,8 @@ Ovni.prototype.operations = {};
 
 Ovni.prototype.operations.Derecho = function(robot,step){
  if(step==undefined)
-  step=0.1;
- Metay=15.5
+  step=0.01;
+ Metay=16.5
  Metax=12.5
  stepy=(Metay-robot.position.y);
  stepx=(Metax-robot.position.x);
@@ -171,7 +171,7 @@ Ovni.prototype.operations.RotarIzquierda = function(robot,angulo){
 
 function setup(){
  var mapa = new Array();
-   mapa[0] = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+   mapa[0] = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx   x";
    mapa[1] = "x         x           x          x";
    mapa[2] = "x         x           x          x";
    mapa[3] = "x         x           x          x";
