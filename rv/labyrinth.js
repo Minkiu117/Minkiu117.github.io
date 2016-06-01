@@ -115,18 +115,35 @@ Ovni.prototype.sense=function(environment){
  var obstaculo2= this.sensor.intersectObjects(environment.children);
  this.sensor.set(this.position,new THREE.Vector3(-Math.cos(theta),Math.sin(theta),0));
  var obstaculo3= this.sensor.intersectObjects(environment.children);
+ this.sensor.set(this.position,new THREE.Vector3(-Math.cos(theta),-Math.sin(theta),0));
+ var obstaculo4= this.sensor.intersectObjects(environment.children);
  var limite=2.2;
-          this.sensor.colision = 0;}
+  if (obstaculo1.length>0&&(obstaculo1[0].distance<=limite)){
+           if((obstaculo2.length >0 && (obstaculo2[0].distance <= limite)))
+            this.sensor.colision= 1;
+          else{
+            if((obstaculo3.length >0 && (obstaculo3[0].distance <= limite)))
+              this.sensor.colision= 2;
+            else{
+              this.sensor.colision= 3;
+            }
+          }
+        }
+        else
+          this.sensor.colision = 0;
+}
 
 
 Ovni.prototype.plan = function(environment){
  this.actuator.commands=[];
  if(this.sensor.colision===0)
-  this.actuator.commands.push('Derecho');
+  this.actuator.commands.push('Enfrente');
  else if(this.sensor.colision===1)
-  this.actuator.commands.push('RotarIzquierda');
+  this.actuator.commands.push('Derecha');
  else if(this.sensor.colision===2)
-  this.actuator.commands.push('RotarDerecha');
+  this.actuator.commands.push('Izquierda');
+ else if(this.sensor.colision===3)
+  this.actuator.commands.push('Atras');
 }
 
 Ovni.prototype.act=function(environment){
@@ -141,31 +158,44 @@ Ovni.prototype.act=function(environment){
 
 Ovni.prototype.operations = {};
 
-Ovni.prototype.operations.Derecho = function(robot,step){
+Ovni.prototype.operations.Enfrente = function(robot,step){
  if(step==undefined)
   step=0.01;
- Metay=16.5
+ Metay=18.5
  Metax=12.5
- stepy=(Metay-robot.position.y);
  stepx=(Metax-robot.position.x);
+ stepy=(Metay-robot.position.y);
  robot.position.x+=step*stepx;
  robot.position.y+=step*stepy;
  robot.cuerpoi.rotation.y-=0.5;
  robot.cuerpos.rotation.y-=0.5;
 };
 
-Ovni.prototype.operations.RotarDerecha = function(robot,angulo){
+Ovni.prototype.operations.Derecha = function(robot,angulo){
  if(angulo==undefined){
-  angulo=-Math.PI/2;
+  step=0.01;
+ Metax=12.5
+ stepx=(Metax-robot.position.x);
+ robot.position.x+=step*stepx;
+ robot.cuerpoi.rotation.y-=0.5;
+ robot.cuerpos.rotation.y-=0.5;
  }
- robot.rotation.z+=angulo;
 };
 
-Ovni.prototype.operations.RotarIzquierda = function(robot,angulo){
+Ovni.prototype.operations.Izquierda = function(robot,angulo){
  if(angulo==undefined){
-  angulo=Math.PI/2;
+  step=0.01;
+ Metax=12.5
+ stepx=(Metax-robot.position.x);
+ robot.position.x+=step*stepx;
+ robot.cuerpoi.rotation.y-=0.5;
+ robot.cuerpos.rotation.y-=0.5;
  }
- robot.rotation.z+=angulo;
+};
+
+Ovni.prototype.operations.Atras = function(robot,angulo){
+ if(angulo==undefined){
+ 
 };
 
 
