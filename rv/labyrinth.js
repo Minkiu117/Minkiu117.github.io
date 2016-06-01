@@ -31,8 +31,9 @@ function Ovni(x=0, y=0){
   this.add(this.cuerpoi)
   this.add(this.cabinaovni);
 
- this.luzr=new THREE.SpotLight(0xffffff,4,10,0.3);
+ this.luzr=new THREE.SpotLight(#12ac24,4,10,0.3);
  this.luzr.target.updateMatrixWorld();
+ this.luzr.shadow.updateMatrixWorld();
  this.luzr.target.position.set(10,0,0);
  this.add(this.luzr);
  this.add(this.luzr.target);
