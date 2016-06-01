@@ -1,10 +1,7 @@
-function Sensor(position,direction){
- THREE.Raycaster.call(this,position,direction);
- this.colision=false;
-}
-Sensor.prototype=new THREE.Raycaster();
-
 function Cabina(){
+  this.__proto__= new THREE.Object3D();
+  var _colision =0;
+  var _raycaster=new THREE.Raycaster(this.position,new THREE.Vector3(1,0,0));
   THREE.Object3D.call(this);
   THREE.ImageUtils.crossOrigin = '';
   var texturacab = new THREE.TextureLoader().load('http://minkiu117.github.io/rv/cab.jpg');
@@ -71,6 +68,66 @@ function Ovni(x=0, y=0){
  this.cabinaovni.castShadow=true;
  this.cuerpos.castShadow=true;
  this.cuerpoi.castShadow=true;
+ 
+ this.evaluar=function(escena){  
+     
+    if(Math.abs(this.children[3].rotation.x)>0.13)
+     _step=-_step;
+    this.children[1].rotation.x-=_step;
+    this.children[2].rotation.x+=_step;
+    this.children[3].rotation.x+=_step;
+    this.children[4].rotation.x-=_step;
+
+    if(_colision === 1)
+      this.rotation.y+=Math.PI/2;
+    else{
+     if(_colision === 2)
+        this.rotation.y+=-Math.PI/2;
+      else{
+        if(_colision === 3)
+            this.rotation.y+=-Math.PI;
+      }  
+    }        
+    theta= this.rotation.y-Math.PI;  
+    this.position.y += _stepcamino*Math.cos(theta);
+    this.position.x += _stepcamino*-Math.sin(theta);
+  }
+  this.sensar = function(escena){ // Sensores para detectar la sparedes y al personaje principal
+        theta = this.rotation.y-Math.PI;
+        _raycaster.set(this.position,new THREE.Vector3(-Math.sin(theta),Math.cos(theta),0));
+        var obstaculo1=_raycaster.intersectObjects(escena.children);
+        _raycaster.set(this.position, new THREE.Vector3(-Math.sin(theta),Math.cos(theta),0));
+        var obstaculo2=_raycaster.intersectObjects(escena.children);
+        _raycaster.set(this.position,new THREE.Vector3(Math.cos(theta),Math.sin(theta),0));
+        var obstaculo3=_raycaster.intersectObjects(escena.children);
+        _raycaster.set(this.position, new THREE.Vector3(-Math.cos(theta),-Math.sin(theta),0));
+        var obstaculo4=_raycaster.intersectObjects(escena.children);
+        var limite=1.1;
+
+        if((obstaculo1.length >0 && (obstaculo1[0].distance <= limite)))
+        {
+          if (obstaculo1[0].object.name=="Heroe") {
+            clearText();
+            setTimeout(function(){alert("¡CAPTURADO!, EL JUEGO SE REINICIARA AL APRETAR EL BOTON DE ACEPTAR");}, 1500)
+            location.reload(true);
+          }
+          else{
+          if((obstaculo3.length >0 && (obstaculo3[0].distance <= limite)))
+            _colision= 1;
+          else{
+            if((obstaculo4.length >0 && (obstaculo4[0].distance <= limite)))
+              _colision= 2;
+            else{
+              _colision= 3;
+            }
+          }
+         }
+        }
+      
+        else
+          _colision = 0;
+        
+  }
 }
 Ovni.prototype=new Agent();
 
