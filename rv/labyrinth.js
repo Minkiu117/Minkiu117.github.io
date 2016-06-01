@@ -86,7 +86,6 @@ function Wall(size,x=0,y=0){
  THREE.ImageUtils.crossOrigin = '';
  var texturaw = new THREE.TextureLoader().load('http://minkiu117.github.io/rv/ecopiedra.jpg');
  THREE.Mesh.call(this,new THREE.BoxGeometry(size,size,size), new  THREE.MeshLambertMaterial({map:texturaw})); 
- this.sensor=new Sensor();
  this.size=size;
  this.position.x=x;
  this.position.y=y;
@@ -119,12 +118,12 @@ Ovni.prototype.sense=function(environment){
  var obstaculo = this.sensor.intersectObjects(environment.children,true);
  var obstaculod = this.sensord.intersectObjects(environment.children,true);
  if ((obstaculod.length>0&&(obstaculod[0].distance<=2.2))){
-  this.sensor.colision=3;
+  this.sensor.colision=2;
   THREE.ImageUtils.crossOrigin = '';
   var texturaw2 = new THREE.TextureLoader().load('http://minkiu117.github.io/rv/magma.jpg'); 
   obstaculo[0].object.material=new THREE.MeshBasicMaterial({map:texturaw2});}
  else
-  this.sensor.colision=2;
+  this.sensor.colision=3;
 
  if ((obstaculo.length>0&&(obstaculo[0].distance<=2.2))){
   this.sensor.colision=1;
@@ -135,10 +134,7 @@ Ovni.prototype.sense=function(environment){
   this.sensor.colision=2;
 }
 
-Wall.prototype.sense=function(environment){
- this.sensor.set(this.position, new THREE.Vector3(0,0,0));
 
-}
 
 Ovni.prototype.plan = function(environment){
  this.actuator.commands=[];
