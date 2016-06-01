@@ -110,7 +110,7 @@ Ovni.prototype.sense=function(environment){
  if ((obstaculo.length>0&&(obstaculo[0].distance<=2.2))){
   this.sensor.colision=true;
   THREE.ImageUtils.crossOrigin = '';
-  var texturaw2 = THREE.TextureLoader().load('http://minkiu117.github.io/rv/magma.jpg'); 
+  var texturaw2 = new THREE.TextureLoader().load('http://minkiu117.github.io/rv/magma.jpg'); 
   obstaculo[0].object.material=new THREE.MeshBasicMaterial({map:texturaw2});}
  else
   this.sensor.colision=false;
