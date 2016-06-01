@@ -192,8 +192,11 @@ Ovni.prototype.operations.Izquierda = function(robot,angulo){
 }
 
 Ovni.prototype.operations.Atras = function(robot,angulo){
- if(angulo==undefined)
- 
+ if(angulo==undefined){
+  angulo=Math.PI;
+ }
+ robot.rotation.z+=angulo;
+};
 
 
 
