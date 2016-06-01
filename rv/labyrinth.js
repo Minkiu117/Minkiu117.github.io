@@ -127,7 +127,7 @@ Ovni.prototype.sense=function(environment){
     var limite=1.1;
     if((obstaculo3.length >0 && (obstaculo3[0].distance <= limite))){
       var texturac = THREE.ImageUtils.loadTexture('http://minkiu117.github.io/rv/magma.jpg'); 
-      obstaculo3[0].object.material=new THREE.MeshBasicMaterial({map:texturac});}
+      obstaculo3[0].object.material=new THREE.MeshBasicMaterial({map:texturac});
       _colision= 1;
     else if((obstaculo1.length >0 && (obstaculo1[0].distance <= limite)))
        _colision= 2;
@@ -135,6 +135,7 @@ Ovni.prototype.sense=function(environment){
       _colision= 3;
     else
       _colision = 0;
+    }
 }
 
 Ovni.prototype.plan = function(environment){
