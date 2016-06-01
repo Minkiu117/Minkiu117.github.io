@@ -120,12 +120,17 @@ Ovni.prototype.sense=function(environment){
  var limite=2.2;
   if (obstaculo1.length>0&&(obstaculo1[0].distance<=limite)){
            if((obstaculo2.length >0 && (obstaculo2[0].distance <= limite)))
-            this.sensor.colision= 1;
+             if(((obstaculo2.length >0 && (obstaculo2[0].distance <= limite))&&(obstaculo3.length >0 && (obstaculo3[0].distance <= limite)))||((obstaculo2.length >0 && (obstaculo2[0].distance <= limite))&&(obstaculo1.length >0 && (obstaculo1[0].distance <= limite))))
+             this.sensor.colision= 3;
+             else{
+             this.sensor.colision= 1;
+             }
           else{
-            if((obstaculo3.length >0 && (obstaculo3[0].distance <= limite)))
-              this.sensor.colision= 2;
-            else{
+           if((obstaculo3.length >0 && (obstaculo3[0].distance <= limite))
+            if((obstaculo3.length >0 && (obstaculo3[0].distance <= limite))&&((obstaculo1.length >0 && (obstaculo1[0].distance <= limite))))
               this.sensor.colision= 3;
+            else{
+              this.sensor.colision= 2;
             }
           }
         }
@@ -193,7 +198,7 @@ Ovni.prototype.operations.Izquierda = function(robot,angulo){
 
 Ovni.prototype.operations.Atras = function(robot,angulo){
  if(angulo==undefined){
-  angulo=Math.PI;
+  angulo=Math.PI/2;
  }
  robot.rotation.z+=angulo;
 };
