@@ -116,7 +116,7 @@ Ovni.prototype.sense=function(environment){
  var obstaculo3= this.sensor.intersectObjects(environment.children);
  this.sensor.set(this.position, new THREE.Vector3(-Math.cos(theta),-Math.sin(theta),0));
  var obstaculo4= this.sensor.intersectObjects(environment.children);
- var limite=2.2;
+ var limite=5;
  if((obstaculo1.length >0 && (obstaculo1[0].distance <= limite)))
         {
           if((obstaculo3.length >0 && (obstaculo3[0].distance <= limite)))
