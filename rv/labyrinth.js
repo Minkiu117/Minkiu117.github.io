@@ -51,8 +51,8 @@ function Ovni(x=0, y=0){
  this.luzrd.target.position.set(0,-10,0);
  this.add(this.luzrd);
  this.add(this.luzrd.target);
- 
 
+ this.sensor=new Sensor();
  this.actuator=new Array();
  
  this.cuerpos.rotation.x=Math.PI/2;
