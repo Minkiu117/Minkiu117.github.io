@@ -120,12 +120,12 @@ Ovni.prototype.sense=function(environment){
  if((obstaculo3.length >0 && (obstaculo3[0].distance <= limite))){
    var texturac = THREE.ImageUtils.loadTexture('http://minkiu117.github.io/rv/magma.jpg'); 
    obstaculo3[0].object.material=new THREE.MeshBasicMaterial({map:texturac});
-   this.sensor.colision= 1;}
- else if((obstaculo1.length >0 && (obstaculo1[0].distance <= limite))){
-    this.sensor.colision= 2;}
- else if((obstaculo2.length >0 && (obstaculo2[0].distance <= limite))){
-   this.sensor.colision= 3;}
- else{
+   this.sensor.colision= 1;
+ else if((obstaculo1.length >0 && (obstaculo1[0].distance <= limite)))
+    this.sensor.colision= 2;
+ else if((obstaculo2.length >0 && (obstaculo2[0].distance <= limite)))
+   this.sensor.colision= 3;
+ else
    this.sensor.colision = 0;
  }
 }
