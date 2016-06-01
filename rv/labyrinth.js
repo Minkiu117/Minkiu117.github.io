@@ -107,7 +107,7 @@ Environment.prototype.setMap=function(map){
 }	
 
 Ovni.prototype.sense=function(environment){
- this.sensor.set(this.position, new THREE.Vector3(-Math.PI+Math.cos(this.rotation.z),-Math.PI+Math.sin(this.rotation.z),0));
+ this.sensor.set(this.position, new THREE.Vector3(3*Math.PI/2+Math.cos(this.rotation.z),3*Math.PI/2+Math.sin(this.rotation.z),0));
  var obstaculo = this.sensor.intersectObjects(environment.children,true);
  if ((obstaculo.length>0&&(obstaculo[0].distance<=2.2))){
   this.sensor.colision=true;
