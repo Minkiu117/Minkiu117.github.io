@@ -1,6 +1,5 @@
 var keyboard = new THREEx.KeyboardState();
 function setup(){
-function setup() {
   
   var esferaFormai = new THREE.SphereGeometry(7, 200, 200, 0, Math.PI*2, Math.PI, .56);
   var esferaFormas = new THREE.SphereGeometry(8, 200, 200, 0, Math.PI*2, 0, .68);
