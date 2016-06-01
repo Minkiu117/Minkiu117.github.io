@@ -162,25 +162,6 @@ Environment.prototype.setMap=function(map){
  }
 }	
 
-Ovni.prototype.sense=function(environment){
- this.sensor.set(this.position, new THREE.Vector3(3*Math.PI/2+Math.cos(this.rotation.z),3*Math.PI/2+Math.sin(this.rotation.z),0));
- var obstaculo = this.sensor.intersectObjects(environment.children,true);
- if ((obstaculo.length>0&&(obstaculo[0].distance<=2.2))){
-  this.sensor.colision=false;
- THREE.ImageUtils.crossOrigin = '';
- var texturawm = new THREE.TextureLoader().load('http://minkiu117.github.io/rv/magma.jpg'); 
-  obstaculo[0].object.material=new THREE.MeshBasicMaterial({map:texturawm});}
- else
-  this.sensor.colision=true;
-}
-
-Ovni.prototype.plan = function(environment){
- this.actuator.commands=[];
- if(this.sensor.colision==true)
-  this.actuator.commands.push('RotarIzquierda');
- else
-  this.actuator.commands.push('Derecho');
-}
 
 
 Ovni.prototype.act=function(environment){
@@ -206,20 +187,6 @@ Ovni.prototype.operations.Derecho = function(robot,step){
  robot.cuerpos.rotation.y-=0.5;
 };
 
-Ovni.prototype.operations.RotarDerecha = function(robot,angulo){
- if(angulo==undefined){
-  angulo=-Math.PI/2;
- }
- robot.rotation.z+=angulo;
-};
-
-Ovni.prototype.operations.RotarIzquierda = function(robot,angulo){
- if(angulo==undefined){
-  angulo=Math.PI/2;
- }
- robot.rotation.z+=angulo;
-};
- 
 function setup(){
  var mapa = new Array();
    mapa[0] = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
