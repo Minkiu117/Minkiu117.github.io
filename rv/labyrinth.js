@@ -31,21 +31,21 @@ function Ovni(x=0, y=0){
   this.add(this.cuerpoi)
   this.add(this.cabinaovni);
 
- this.luzrf=new THREE.SpotLight(0x12ac24,4,10,.02);
+ this.luzrf=new THREE.SpotLight(0x12ac24,4,10,.1);
  this.luzrf.target.updateMatrixWorld();
  this.luzrf.shadow;
  this.luzrf.target.position.set(10,0,0);
  this.add(this.luzrf);
  this.add(this.luzrf.target);
  
- this.luzri=new THREE.SpotLight(0x12ac24,4,10,.02);
+ this.luzri=new THREE.SpotLight(0x12ac24,4,10,.1);
  this.luzri.target.updateMatrixWorld();
  this.luzri.shadow;
  this.luzri.target.position.set(0,10,0);
  this.add(this.luzri);
  this.add(this.luzri.target);
  
- this.luzrd=new THREE.SpotLight(0x12ac24,4,10,.02);
+ this.luzrd=new THREE.SpotLight(0x12ac24,4,10,.1);
  this.luzrd.target.updateMatrixWorld();
  this.luzrd.shadow;
  this.luzrd.target.position.set(0,-10,0);
@@ -75,9 +75,11 @@ function Ovni(x=0, y=0){
 Ovni.prototype=new Agent();
 
 function Wall(size,x=0,y=0){
+ 
  THREE.ImageUtils.crossOrigin = '';
  var texturaw = new THREE.TextureLoader().load('http://minkiu117.github.io/rv/ecopiedra.jpg');
  THREE.Mesh.call(this,new THREE.BoxGeometry(size,size,size), new  THREE.MeshLambertMaterial({map:texturaw})); 
+ this.sensor=new Sensor();
  this.size=size;
  this.position.x=x;
  this.position.y=y;
@@ -115,6 +117,10 @@ Ovni.prototype.sense=function(environment){
  else
   this.sensor.colision=false;
 }
+
+Wall.prototype.sense=function(environment){
+ this.sensor.set(this.position, new THREE.Vector3(0,0,0));
+
 
 Ovni.prototype.plan = function(environment){
  this.actuator.commands=[];
