@@ -207,7 +207,7 @@ Ovni.prototype.operations.Atras = function(robot,angulo){
 
 function setup(){
  var mapa = new Array();
-   mapa[0] = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx   x";
+   mapa[0] = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx    x";
    mapa[1] = "x         x           x          x";
    mapa[2] = "x         x           x          x";
    mapa[3] = "x         x           x          x";
@@ -239,7 +239,7 @@ function setup(){
   mapa[29] = "x         xxxxxxxxxxxxx          x";
   mapa[30] = "x         x           x          x";
   mapa[31] = "x         x           x          x";
-  mapa[32] = "x    r    x           x          x";
+  mapa[32] = "x    r    x           x     r    x";
   mapa[33] = "x         x           x          x";
   mapa[34] = "x         x           x          x";
   mapa[35] = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
