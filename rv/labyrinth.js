@@ -108,14 +108,24 @@ Environment.prototype.setMap=function(map){
 
 Ovni.prototype.sense=function(environment){
  this.sensor.set(this.position, new THREE.Vector3(Math.cos(this.rotation.z),Math.sin(this.rotation.z),0));
+ this.sensord.set(this.position, new THREE.Vector3(Math.PI/2+Math.cos(this.rotation.z),Math.PI/2+Math.sin(this.rotation.z),0));
  var obstaculo = this.sensor.intersectObjects(environment.children,true);
- if ((obstaculo.length>0&&(obstaculo[0].distance<=2.2))){
-  this.sensor.colision=true;
+ var obstaculo2 = this.sensor2.intersectObjects(environment.children,true);
+ if ((obstacul2.length>0&&(obstaculo2[0].distance<=2.2))){
+  this.sensor.colision=3;
   THREE.ImageUtils.crossOrigin = '';
   var texturaw2 = new THREE.TextureLoader().load('http://minkiu117.github.io/rv/magma.jpg'); 
   obstaculo[0].object.material=new THREE.MeshBasicMaterial({map:texturaw2});}
  else
-  this.sensor.colision=false;
+  this.sensor.colision=2;
+
+ if ((obstaculo.length>0&&(obstaculo[0].distance<=2.2))){
+  this.sensor.colision=1;
+  THREE.ImageUtils.crossOrigin = '';
+  var texturaw2 = new THREE.TextureLoader().load('http://minkiu117.github.io/rv/magma.jpg'); 
+  obstaculo[0].object.material=new THREE.MeshBasicMaterial({map:texturaw2});}
+ else
+  this.sensor.colision=2;
 }
 
 Wall.prototype.sense=function(environment){
@@ -125,10 +135,12 @@ Wall.prototype.sense=function(environment){
 
 Ovni.prototype.plan = function(environment){
  this.actuator.commands=[];
- if(this.sensor.colision==true)
+ if(this.sensor.colision==1)
   this.actuator.commands.push('RotarIzquierda');
- else
+ else if(this.sensor.colision==2)
   this.actuator.commands.push('Derecho');
+ else if(this.sensor.colision==3)
+  this.actuator.commands.push('RotarDerecha');
 }
 
 Ovni.prototype.act=function(environment){
