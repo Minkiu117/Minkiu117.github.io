@@ -1,5 +1,5 @@
 function Sensor(position,direction){
-  theta = Math.PI;
+  theta = Math.PI/3;
         _raycaster.set(this.position,new THREE.Vector3(-Math.sin(theta),Math.cos(theta),0));
         var obstaculo1=_raycaster.intersectObjects(environment.children);
         _raycaster.set(this.position, new THREE.Vector3(Math.sin(theta),-Math.cos(theta),0));
