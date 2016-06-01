@@ -179,7 +179,7 @@ Ovni.prototype.operations.Enfrente = function(robot,step){
 
 Ovni.prototype.operations.Derecha = function(robot,angulo){
  if(angulo==undefined)
- if(x<=0.1){
+ if(x<=0.5){
  step=2;
  Metax=0
  stepx=(Metax-robot.position.x);
