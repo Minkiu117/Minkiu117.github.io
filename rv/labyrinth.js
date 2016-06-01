@@ -48,7 +48,7 @@ function Ovni(x=0, y=0){
  this.luzrd=new THREE.SpotLight(0x12ac24,4,11,0.3);
  this.luzrd.target.updateMatrixWorld();
  this.luzrd.shadow;
- this.luzrd.target.position.set(0,11,Math.PI/2);
+ this.luzrd.target.position.set(0,11,3*Math.PI/2);
  this.add(this.luzrd);
  this.add(this.luzrd.target);
  
