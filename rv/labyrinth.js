@@ -120,15 +120,16 @@ Ovni.prototype.sense=function(environment){
         {
          this.sensor.colision= 2;
         }
-        else if((obstaculo3.length =0 && (obstaculo3[0].distance>= limite))){
+        else if((obstaculo3.length =0 && (obstaculo3[0].distance>limite))){
             this.sensor.colision= 2;}
-          else if((obstaculo2.length =0 && (obstaculo2[0].distance>= limite))){
+          else if((obstaculo2.length =0 && (obstaculo2[0].distance>limite))){
               this.sensor.colision= 1;}
               else{
           this.sensor.colision = 0;}
 }
 
 Ovni.prototype.plan = function(environment){
+ console.log(this.sensor.colision)
  this.actuator.commands=[];
  if(this.sensor.colision===0)
   this.actuator.commands.push('Derecho');
