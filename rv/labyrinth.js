@@ -138,11 +138,11 @@ Ovni.prototype.plan = function(environment){
  if(this.sensor.colision==0)
   this.actuator.commands.push('Derecho');
  else if(this.sensor.colision==1)
-  this.actuator.commands.push('RotarIzquierda');
+  this.actuator.commands.push('RotarDerecha');
  else if(this.sensor.colision==2)
   this.actuator.commands.push('RotarIzquierda');
  else if(this.sensor.colision==3)
-  this.actuator.commands.push('RotarDerecha');
+  this.actuator.commands.push('RotarIzquierda');
 }
 
 Ovni.prototype.act=function(environment){
