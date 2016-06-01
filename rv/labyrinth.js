@@ -1,12 +1,12 @@
 function Sensor(position,direction){
  THREE.Raycaster.call(this,position,direction);
- this.colision=2;
+ this.colision=false;
 }
 Sensor.prototype=new THREE.Raycaster();
 
 function Sensord(position,direction){
  THREE.Raycaster.call(this,position,direction);
- this.colision=2;
+ this.colision=false;
 }
 Sensord.prototype=new THREE.Raycaster();
 
@@ -37,21 +37,21 @@ function Ovni(x=0, y=0){
   this.add(this.cuerpoi)
   this.add(this.cabinaovni);
 
- this.luzrf=new THREE.SpotLight(0x12ac24,4,3,2);
+ this.luzrf=new THREE.SpotLight(0x12ac24,4,5,2);
  this.luzrf.target.updateMatrixWorld();
  this.luzrf.shadow;
  this.luzrf.target.position.set(10,0,0);
  this.add(this.luzrf);
  this.add(this.luzrf.target);
  
- this.luzri=new THREE.SpotLight(0x12ac24,4,3,2);
+ this.luzri=new THREE.SpotLight(0x12ac24,4,5,2);
  this.luzri.target.updateMatrixWorld();
  this.luzri.shadow;
  this.luzri.target.position.set(0,10,0);
  this.add(this.luzri);
  this.add(this.luzri.target);
  
- this.luzrd=new THREE.SpotLight(0x12ac24,4,3,2);
+ this.luzrd=new THREE.SpotLight(0x12ac24,4,5,2);
  this.luzrd.target.updateMatrixWorld();
  this.luzrd.shadow;
  this.luzrd.target.position.set(0,-10,0);
