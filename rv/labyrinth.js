@@ -118,31 +118,31 @@ Ovni.prototype.sense=function(environment){
  var obstaculo = this.sensor.intersectObjects(environment.children,true);
  var obstaculod = this.sensord.intersectObjects(environment.children,true);
  if ((obstaculod.length>0&&(obstaculod[0].distance<=2.2))){
-  this.sensor.colision=2;
+  this.sensord.colision=true;
   THREE.ImageUtils.crossOrigin = '';
   var texturaw2 = new THREE.TextureLoader().load('http://minkiu117.github.io/rv/magma.jpg'); 
   obstaculo[0].object.material=new THREE.MeshBasicMaterial({map:texturaw2});}
  else
-  this.sensor.colision=3;
+  this.sensord.colision=false;
 
  if ((obstaculo.length>0&&(obstaculo[0].distance<=2.2))){
-  this.sensor.colision=1;
+  this.sensor.colision=true;
   THREE.ImageUtils.crossOrigin = '';
   var texturaw2 = new THREE.TextureLoader().load('http://minkiu117.github.io/rv/magma.jpg'); 
   obstaculo[0].object.material=new THREE.MeshBasicMaterial({map:texturaw2});}
  else
-  this.sensor.colision=2;
+  this.sensor.colision=false;
 }
 
 
 
 Ovni.prototype.plan = function(environment){
  this.actuator.commands=[];
- if(this.sensor.colision==1)
+ if(this.sensor.colision==true)
   this.actuator.commands.push('RotarIzquierda');
- else if(this.sensor.colision==2)
+ else if(this.sensor.colision==false && this.sensord.colision==false)
   this.actuator.commands.push('Derecho');
- else if(this.sensor.colision==3)
+ else if(this.sensord.colision==true)
   this.actuator.commands.push('RotarDerecha');
 }
 
