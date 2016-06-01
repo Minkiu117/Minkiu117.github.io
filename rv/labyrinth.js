@@ -180,18 +180,18 @@ Ovni.prototype.operations.Enfrente = function(robot,step){
 
 Ovni.prototype.operations.Derecha = function(robot,angulo){
  if(angulo==undefined)
- if(x<=0.1)
+ if(x<=0.1){
  step=2;
  Metax=0
  stepx=(Metax-robot.position.x);
- robot.position.x+=step*stepx;
- else
+ robot.position.x+=step*stepx;}
+ else{
  step=0.01;
  Metax=12.5
  stepx=(Metax-robot.position.x);
  robot.position.x+=step*stepx;
  robot.cuerpoi.rotation.y-=0.5;
- robot.cuerpos.rotation.y-=0.5;
+ robot.cuerpos.rotation.y-=0.5;}
 }
 
 Ovni.prototype.operations.Izquierda = function(robot,angulo){
