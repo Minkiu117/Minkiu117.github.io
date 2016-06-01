@@ -1,4 +1,4 @@
-var keyboard = new THREEx.KeyboardState();
+var keyboard = new THREE.KeyboardState();
 function setup(){
   
   var esferaFormai = new THREE.SphereGeometry(7, 200, 200, 0, Math.PI*2, Math.PI, .56);
