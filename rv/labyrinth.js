@@ -1,7 +1,18 @@
+function Sensor(position,direction){
+   theta = this.rotation.y-Math.PI;
+        _raycaster.set(this.position,new THREE.Vector3(-Math.sin(theta),Math.cos(theta),0));
+        var obstaculo1=_raycaster.intersectObjects(environment.children);
+        _raycaster.set(this.position, new THREE.Vector3(Math.sin(theta),-Math.cos(theta),0));
+        var obstaculo2=_raycaster.intersectObjects(environment.children);
+        _raycaster.set(this.position,new THREE.Vector3(Math.cos(theta),Math.sin(theta),0));
+        var obstaculo3=_raycaster.intersectObjects(environment.children);
+        _raycaster.set(this.position, new THREE.Vector3(-Math.cos(theta),-Math.sin(theta),0));
+        var obstaculo4=_raycaster.intersectObjects(environment.children);
+ this.colision=0;
+}
+Sensor.prototype=new THREE.Raycaster();
+
 function Cabina(){
-  this.__proto__= new THREE.Object3D();
-  var _colision =0;
-  var _raycaster=new THREE.Raycaster(this.position,new THREE.Vector3(1,0,0));
   THREE.Object3D.call(this);
   THREE.ImageUtils.crossOrigin = '';
   var texturacab = new THREE.TextureLoader().load('http://minkiu117.github.io/rv/cab.jpg');
@@ -27,6 +38,7 @@ function Ovni(x=0, y=0){
   this.add(this.cuerpos)
   this.add(this.cuerpoi)
   this.add(this.cabinaovni);
+  
 
  this.luzrf=new THREE.SpotLight(0x12ac24,4,5,2);
  this.luzrf.target.updateMatrixWorld();
@@ -49,6 +61,7 @@ function Ovni(x=0, y=0){
  this.add(this.luzrd);
  this.add(this.luzrd.target);
 
+ this.sensor=new Sensor();
  this.actuator=new Array();
  
  this.cuerpos.rotation.x=Math.PI/2;
@@ -68,70 +81,10 @@ function Ovni(x=0, y=0){
  this.cuerpos.castShadow=true;
  this.cuerpoi.castShadow=true;
  
- this.evaluar=function(escena){  
-     
-    if(Math.abs(this.children[3].rotation.x)>0.13)
-     _step=-_step;
-    this.children[1].rotation.x-=_step;
-    this.children[2].rotation.x+=_step;
-    this.children[3].rotation.x+=_step;
-    this.children[4].rotation.x-=_step;
-
-    if(_colision === 1)
-      this.rotation.y+=Math.PI/2;
-    else{
-     if(_colision === 2)
-        this.rotation.y+=-Math.PI/2;
-      else{
-        if(_colision === 3)
-            this.rotation.y+=-Math.PI;
-      }  
-    }        
-    theta= this.rotation.y-Math.PI;  
-    this.position.y += _stepcamino*Math.cos(theta);
-    this.position.x += _stepcamino*-Math.sin(theta);
-  }
-  this.sensar = function(escena){ // Sensores para detectar la sparedes y al personaje principal
-        theta = this.rotation.y-Math.PI;
-        _raycaster.set(this.position,new THREE.Vector3(-Math.sin(theta),Math.cos(theta),0));
-        var obstaculo1=_raycaster.intersectObjects(escena.children);
-        _raycaster.set(this.position, new THREE.Vector3(-Math.sin(theta),Math.cos(theta),0));
-        var obstaculo2=_raycaster.intersectObjects(escena.children);
-        _raycaster.set(this.position,new THREE.Vector3(Math.cos(theta),Math.sin(theta),0));
-        var obstaculo3=_raycaster.intersectObjects(escena.children);
-        _raycaster.set(this.position, new THREE.Vector3(-Math.cos(theta),-Math.sin(theta),0));
-        var obstaculo4=_raycaster.intersectObjects(escena.children);
-        var limite=1.1;
-
-        if((obstaculo1.length >0 && (obstaculo1[0].distance <= limite)))
-        {
-          if (obstaculo1[0].object.name=="Heroe") {
-            clearText();
-            setTimeout(function(){alert("¡CAPTURADO!, EL JUEGO SE REINICIARA AL APRETAR EL BOTON DE ACEPTAR");}, 1500)
-            location.reload(true);
-          }
-          else{
-          if((obstaculo3.length >0 && (obstaculo3[0].distance <= limite)))
-            _colision= 1;
-          else{
-            if((obstaculo4.length >0 && (obstaculo4[0].distance <= limite)))
-              _colision= 2;
-            else{
-              _colision= 3;
-            }
-          }
-         }
-        }
-      
-        else
-          _colision = 0;
-        
-  }
 }
 Ovni.prototype=new Agent();
 
 function Wall(size,x=0,y=0){
- 
  THREE.ImageUtils.crossOrigin = '';
  var texturaw = new THREE.TextureLoader().load('http://minkiu117.github.io/rv/ecopiedra.jpg');
  THREE.Mesh.call(this,new THREE.BoxGeometry(size,size,size), new  THREE.MeshLambertMaterial({map:texturaw})); 
@@ -139,7 +92,6 @@ function Wall(size,x=0,y=0){
  this.position.x=x;
  this.position.y=y;
 }
-
 Wall.prototype=new THREE.Mesh();
 
 function WallBasic(size,x=0,y=0){
@@ -161,6 +113,76 @@ Environment.prototype.setMap=function(map){
   }
  }
 }	
+
+Ovni.prototype.sense=function(environment){
+     theta = this.rotation.z;
+    _raycaster.set(this.position,new THREE.Vector3(-Math.sin(theta),Math.cos(theta),0));
+    var obstaculo1=_raycaster.intersectObjects(environment.children);
+    _raycaster.set(this.position, new THREE.Vector3(Math.sin(theta),-Math.cos(theta),0));
+    var obstaculo2=_raycaster.intersectObjects(environment.children);
+    _raycaster.set(this.position,new THREE.Vector3(Math.cos(theta),Math.sin(theta),0));
+    var obstaculo3=_raycaster.intersectObjects(environment.children);
+    _raycaster.set(this.position, new THREE.Vector3(-Math.cos(theta),-Math.sin(theta),0));
+    var obstaculo4=_raycaster.intersectObjects(environment.children);
+    var limite=1.1;
+    if((obstaculo3.length >0 && (obstaculo3[0].distance <= limite))){
+      var texturac = THREE.ImageUtils.loadTexture('http://minkiu117.github.io/rv/magma.jpg'); 
+      obstaculo3[0].object.material=new THREE.MeshBasicMaterial({map:texturac});}
+      _colision= 1;
+    else if((obstaculo1.length >0 && (obstaculo1[0].distance <= limite)))
+       _colision= 2;
+    else if((obstaculo2.length >0 && (obstaculo2[0].distance <= limite)))
+      _colision= 3;
+    else
+      _colision = 0;
+}
+
+Ovni.prototype.plan = function(environment){
+ this.actuator.commands=[];
+ if(this.sensor.colision==0)
+  this.actuator.commands.push('Derecho');
+ else if(this.sensor.colision==1)
+  this.actuator.commands.push('RotarIzquierda');
+ else if(this.sensor.colision==2)
+  this.actuator.commands.push('RotarIzquierda');
+ else if(this.sensor.colision==3)
+  this.actuator.commands.push('RotarDerecha');
+}
+
+Ovni.prototype.act=function(environment){
+ var command=this.actuator.commands.pop();
+ if(command==undefined)
+  console.log('Undefined command');
+ else if(command in this.operations)
+  this.operations[command](this);
+ else
+  console.log('Unknown command'); 
+}
+
+Ovni.prototype.operations = {};
+
+Ovni.prototype.operations.Derecho = function(robot,step){
+ if(step==undefined)
+  step=0.1;
+ robot.position.x+=step*Math.cos(robot.rotation.z);
+ robot.position.y+=step*Math.sin(robot.rotation.z);
+ robot.cuerpoi.rotation.y-=0.5;
+ robot.cuerpos.rotation.y-=0.5;
+};
+
+Ovni.prototype.operations.RotarDerecha = function(robot,angulo){
+ if(angulo==undefined){
+  angulo=-Math.PI/2;
+ }
+ robot.rotation.z+=angulo;
+};
+
+Ovni.prototype.operations.RotarIzquierda = function(robot,angulo){
+ if(angulo==undefined){
+  angulo=Math.PI/2;
+ }
+ robot.rotation.z+=angulo;
+};
 
 this.sensar = function(escena){ 
         theta = this.rotation.y-Math.PI;
