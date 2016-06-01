@@ -56,10 +56,7 @@ function Ovni(x=0, y=0){
  this.add(this.luzrd);
  this.add(this.luzrd.target);
  
- this.sensor1=new Sensor.raycaster1();
- this.sensor2=new Sensor.raycaster2();
- this.sensor3=new Sensor.raycaster3();
- this.sensor4=new Sensor.raycaster4();
+
  this.actuator=new Array();
  
  this.cuerpos.rotation.x=Math.PI/2;
@@ -113,10 +110,10 @@ Environment.prototype.setMap=function(map){
 }	
 
 Ovni.prototype.sense=function(environment){
- this.sensor.set(this.position, new THREE.Vector3(Math.cos(this.rotation.z),Math.sin(this.rotation.z),0));
- this.sensord.set(this.position, new THREE.Vector3(-Math.PI/2+Math.cos(this.rotation.z),Math.PI/2+Math.sin(this.rotation.z),0));
+ this.sensor.raycaster1.set(this.position, new THREE.Vector3(Math.cos(this.rotation.z),Math.sin(this.rotation.z),0));
+ this.sensor.raycaster2.set(this.position, new THREE.Vector3(-Math.PI/2+Math.cos(this.rotation.z),Math.PI/2+Math.sin(this.rotation.z),0));
  var obstaculo = this.sensor.intersectObjects(environment.children,true);
- var obstaculod = this.sensord.intersectObjects(environment.children,true);
+ var obstaculod = this.sensor.intersectObjects(environment.children,true);
  if ((obstaculod.length>0&&(obstaculod[0].distance<=2.2))){
   this.sensord.colision=true;
   THREE.ImageUtils.crossOrigin = '';
