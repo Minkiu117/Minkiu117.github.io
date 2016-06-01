@@ -1,14 +1,12 @@
 function Sensor(position,direction){
- THREE.Raycaster.call(this,position,direction);
+this.raycaster1=new THREE.Raycaster.call(this,position,direction);
+this.raycaster2=new THREE.Raycaster.call(this,position,direction);
+this.raycaster3=new THREE.Raycaster.call(this,position,direction);
+this.raycaster4=new THREE.Raycaster.call(this,position,direction);
  this.colision=false;
 }
 Sensor.prototype=new THREE.Raycaster();
 
-function Sensord(position,direction){
- THREE.Raycaster.call(this,position,direction);
- this.colision=false;
-}
-Sensord.prototype=new THREE.Raycaster();
 
 function Cabina(){
   THREE.Object3D.call(this);
