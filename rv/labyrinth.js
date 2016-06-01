@@ -1,6 +1,4 @@
 
-
-
 function Cabina(){
   THREE.Object3D.call(this);
   THREE.ImageUtils.crossOrigin = '';
