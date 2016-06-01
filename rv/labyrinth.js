@@ -31,12 +31,19 @@ function Ovni(x=0, y=0){
   this.add(this.cuerpoi)
   this.add(this.cabinaovni);
 
- this.luzr=new THREE.SpotLight(0x12ac24,4,10,0.3);
- this.luzr.target.updateMatrixWorld();
- this.luzr.shadow;
- this.luzr.target.position.set(10,0,0);
- this.add(this.luzr);
- this.add(this.luzr.target);
+ this.luzrf=new THREE.SpotLight(0x12ac24,4,20,0.3);
+ this.luzrf.target.updateMatrixWorld();
+ this.luzrf.shadow;
+ this.luzrf.target.position.set(10,0,0);
+ this.add(this.luzrf);
+ this.add(this.luzrf.target);
+ 
+ this.luzrd=new THREE.SpotLight(0x12ac24,4,20,0.3);
+ this.luzrd.target.updateMatrixWorld();
+ this.luzrd.shadow;
+ this.luzrd.target.position.set(0,10,0);
+ this.add(this.luzrd);
+ this.add(this.luzrd.target);
  
  this.sensor=new Sensor();
  this.actuator=new Array();
