@@ -107,27 +107,27 @@ Environment.prototype.setMap=function(map){
 }	
 
 Ovni.prototype.sense=function(environment){
-     theta = this.rotation.z;
-    _raycaster.set(this.position,new THREE.Vector3(-Math.sin(theta),Math.cos(theta),0));
-    var obstaculo1=_raycaster.intersectObjects(environment.children);
-    _raycaster.set(this.position, new THREE.Vector3(Math.sin(theta),-Math.cos(theta),0));
-    var obstaculo2=_raycaster.intersectObjects(environment.children);
-    _raycaster.set(this.position,new THREE.Vector3(Math.cos(theta),Math.sin(theta),0));
-    var obstaculo3=_raycaster.intersectObjects(environment.children);
-    _raycaster.set(this.position, new THREE.Vector3(-Math.cos(theta),-Math.sin(theta),0));
-    var obstaculo4=_raycaster.intersectObjects(environment.children);
-    var limite=1.1;
-    if((obstaculo3.length >0 && (obstaculo3[0].distance <= limite))){
-      var texturac = THREE.ImageUtils.loadTexture('http://minkiu117.github.io/rv/magma.jpg'); 
-      obstaculo3[0].object.material=new THREE.MeshBasicMaterial({map:texturac});
-      _colision= 1;}
-    else if((obstaculo1.length >0 && (obstaculo1[0].distance <= limite))){
-       _colision= 2;}
-    else if((obstaculo2.length >0 && (obstaculo2[0].distance <= limite))){
-      _colision= 3;}
-    else{
-      _colision = 0;
-    }
+ theta = this.rotation.z;
+ this.sensor.set(this.position,new THREE.Vector3(-Math.sin(theta),Math.cos(theta),0));
+ var obstaculo1=_raycaster.intersectObjects(environment.children);
+ this.sensor.set(this.position, new THREE.Vector3(Math.sin(theta),-Math.cos(theta),0));
+ var obstaculo2=_raycaster.intersectObjects(environment.children);
+ this.sensor.set(this.position,new THREE.Vector3(Math.cos(theta),Math.sin(theta),0));
+ var obstaculo3=_raycaster.intersectObjects(environment.children);
+ this.sensor.set(this.position, new THREE.Vector3(-Math.cos(theta),-Math.sin(theta),0));
+ var obstaculo4=_raycaster.intersectObjects(environment.children);
+ var limite=1.1;
+ if((obstaculo3.length >0 && (obstaculo3[0].distance <= limite))){
+   var texturac = THREE.ImageUtils.loadTexture('http://minkiu117.github.io/rv/magma.jpg'); 
+   obstaculo3[0].object.material=new THREE.MeshBasicMaterial({map:texturac});
+   _colision= 1;}
+ else if((obstaculo1.length >0 && (obstaculo1[0].distance <= limite))){
+    _colision= 2;}
+ else if((obstaculo2.length >0 && (obstaculo2[0].distance <= limite))){
+   _colision= 3;}
+ else{
+   _colision = 0;
+ }
 }
 
 Ovni.prototype.plan = function(environment){
