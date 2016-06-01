@@ -169,7 +169,7 @@ Ovni.prototype.operations.Enfrente = function(robot,step){
  robot.position.y+=step*stepy;
  robot.cuerpoi.rotation.y-=0.5;
  robot.cuerpos.rotation.y-=0.5;
-};
+}
 
 Ovni.prototype.operations.Derecha = function(robot,angulo){
  if(angulo==undefined)
@@ -179,7 +179,7 @@ Ovni.prototype.operations.Derecha = function(robot,angulo){
  robot.position.x+=step*stepx;
  robot.cuerpoi.rotation.y-=0.5;
  robot.cuerpos.rotation.y-=0.5;
-};
+}
 
 Ovni.prototype.operations.Izquierda = function(robot,angulo){
  if(angulo==undefined)
@@ -189,12 +189,12 @@ Ovni.prototype.operations.Izquierda = function(robot,angulo){
  robot.position.x+=step*stepx;
  robot.cuerpoi.rotation.y-=0.5;
  robot.cuerpos.rotation.y-=0.5;
-};
+}
 
 Ovni.prototype.operations.Atras = function(robot,angulo){
  if(angulo==undefined)
  
-};
+}
 
 
 function setup(){
