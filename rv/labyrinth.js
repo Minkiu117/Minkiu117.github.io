@@ -109,13 +109,13 @@ Environment.prototype.setMap=function(map){
 Ovni.prototype.sense=function(environment){
  theta = this.rotation.z;
  this.sensor.set(this.position,new THREE.Vector3(-Math.sin(theta),Math.cos(theta),0));
- var obstaculo1=_raycaster.intersectObjects(environment.children);
+ var obstaculo1= this.sensor.intersectObjects(environment.children);
  this.sensor.set(this.position, new THREE.Vector3(Math.sin(theta),-Math.cos(theta),0));
- var obstaculo2=_raycaster.intersectObjects(environment.children);
+ var obstaculo2= this.sensor.intersectObjects(environment.children);
  this.sensor.set(this.position,new THREE.Vector3(Math.cos(theta),Math.sin(theta),0));
- var obstaculo3=_raycaster.intersectObjects(environment.children);
+ var obstaculo3= this.sensor.intersectObjects(environment.children);
  this.sensor.set(this.position, new THREE.Vector3(-Math.cos(theta),-Math.sin(theta),0));
- var obstaculo4=_raycaster.intersectObjects(environment.children);
+ var obstaculo4= this.sensor.intersectObjects(environment.children);
  var limite=1.1;
  if((obstaculo3.length >0 && (obstaculo3[0].distance <= limite))){
    var texturac = THREE.ImageUtils.loadTexture('http://minkiu117.github.io/rv/magma.jpg'); 
