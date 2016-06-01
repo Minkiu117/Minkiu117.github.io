@@ -144,8 +144,8 @@ Ovni.prototype.operations = {};
 Ovni.prototype.operations.Derecho = function(robot,step){
  if(step==undefined)
   step=0.1;
- Metay=12.5
- Metax=15.5
+ Metay=15.5
+ Metax=12.5
  stepy=(Metay-robot.position.y);
  stepx=(Metax-robot.position.x);
  robot.position.x+=step*stepx;
