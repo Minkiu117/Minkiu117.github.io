@@ -1,11 +1,4 @@
-function Sensor(position,direction){
-this.raycaster1=THREE.Raycaster.call(this,position,direction);
-this.raycaster2=THREE.Raycaster.call(this,position,direction);
-this.raycaster3=THREE.Raycaster.call(this,position,direction);
-this.raycaster4=THREE.Raycaster.call(this,position,direction);
- this.colision=false;
-}
-Sensor.prototype=new THREE.Raycaster();
+
 
 
 function Cabina(){
@@ -78,6 +71,11 @@ function Ovni(x=0, y=0){
 }
 Ovni.prototype=new Agent();
 
+sensor=new THREE.Raycaster(Ovni.position,new THREE.Vector3(1,0,0));
+//raycaster2=new THREE.Raycaster(kirby.position,new THREE.Vector3(-1,0,0));
+//raycaster3=new THREE.Raycaster(kirby.position,new THREE.Vector3(0,1,0));
+//raycaster4=new THREE.Raycaster(kirby.position,new THREE.Vector3(0,-1,0));
+
 function Wall(size,x=0,y=0){
  
  THREE.ImageUtils.crossOrigin = '';
@@ -110,26 +108,15 @@ Environment.prototype.setMap=function(map){
 }	
 
 Ovni.prototype.sense=function(environment){
- this.sensor.raycaster1.set(this.position, new THREE.Vector3(Math.cos(this.rotation.z),Math.sin(this.rotation.z),0));
- this.sensor.raycaster2.set(this.position, new THREE.Vector3(-Math.PI/2+Math.cos(this.rotation.z),Math.PI/2+Math.sin(this.rotation.z),0));
+ sensor.set(Ovni.position,new THREE.Vector3(1,0,0));
  var obstaculo = this.sensor.intersectObjects(environment.children,true);
- var obstaculod = this.sensor.intersectObjects(environment.children,true);
  if ((obstaculod.length>0&&(obstaculod[0].distance<=2.2))){
-  this.sensord.colision=true;
-  THREE.ImageUtils.crossOrigin = '';
-  var texturaw2 = new THREE.TextureLoader().load('http://minkiu117.github.io/rv/magma.jpg'); 
-  obstaculo[0].object.material=new THREE.MeshBasicMaterial({map:texturaw2});}
- else
-  this.sensord.colision=false;
-
- if ((obstaculo.length>0&&(obstaculo[0].distance<=2.2))){
   this.sensor.colision=true;
   THREE.ImageUtils.crossOrigin = '';
   var texturaw2 = new THREE.TextureLoader().load('http://minkiu117.github.io/rv/magma.jpg'); 
   obstaculo[0].object.material=new THREE.MeshBasicMaterial({map:texturaw2});}
  else
   this.sensor.colision=false;
-}
 
 
 
@@ -137,10 +124,8 @@ Ovni.prototype.plan = function(environment){
  this.actuator.commands=[];
  if(this.sensor.colision==true)
   this.actuator.commands.push('RotarIzquierda');
- else if(this.sensor.colision==false && this.sensord.colision==false)
+ else if(this.sensor.colision==false )
   this.actuator.commands.push('Derecho');
- else if(this.sensord.colision==true)
-  this.actuator.commands.push('RotarDerecha');
 }
 
 Ovni.prototype.act=function(environment){
