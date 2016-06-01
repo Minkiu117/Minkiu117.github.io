@@ -1,3 +1,8 @@
+function Sensor(position,direction){
+ THREE.Raycaster.call(this,position,direction);
+ this.colision=false;
+}
+Sensor.prototype=new THREE.Raycaster();
 
 function Cabina(){
   THREE.Object3D.call(this);
@@ -69,11 +74,6 @@ function Ovni(x=0, y=0){
 }
 Ovni.prototype=new Agent();
 
-sensor=new THREE.Raycaster(Ovni.position,new THREE.Vector3(1,0,0));
-//raycaster2=new THREE.Raycaster(kirby.position,new THREE.Vector3(-1,0,0));
-//raycaster3=new THREE.Raycaster(kirby.position,new THREE.Vector3(0,1,0));
-//raycaster4=new THREE.Raycaster(kirby.position,new THREE.Vector3(0,-1,0));
-
 function Wall(size,x=0,y=0){
  
  THREE.ImageUtils.crossOrigin = '';
@@ -83,6 +83,7 @@ function Wall(size,x=0,y=0){
  this.position.x=x;
  this.position.y=y;
 }
+
 Wall.prototype=new THREE.Mesh();
 
 function WallBasic(size,x=0,y=0){
@@ -106,25 +107,25 @@ Environment.prototype.setMap=function(map){
 }	
 
 Ovni.prototype.sense=function(environment){
- sensor.set(Ovni.position,new THREE.Vector3(1,0,0));
+ this.sensor.set(this.position, new THREE.Vector3(Math.cos(this.rotation.z),Math.sin(this.rotation.z),0));
  var obstaculo = this.sensor.intersectObjects(environment.children,true);
- if ((obstaculod.length>0&&(obstaculod[0].distance<=2.2))){
+ if ((obstaculo.length>0&&(obstaculo[0].distance<=2.2))){
   this.sensor.colision=true;
-  THREE.ImageUtils.crossOrigin = '';
-  var texturaw2 = new THREE.TextureLoader().load('http://minkiu117.github.io/rv/magma.jpg'); 
-  obstaculo[0].object.material=new THREE.MeshBasicMaterial({map:texturaw2});}
+ THREE.ImageUtils.crossOrigin = '';
+ var texturac = THREE.ImageUtils.loadTexture('http://minkiu117.github.io/rv/cesped.jpg'); 
+  obstaculo[0].object.material=new THREE.MeshBasicMaterial({map:texturac});}
  else
   this.sensor.colision=false;
 }
-
 
 Ovni.prototype.plan = function(environment){
  this.actuator.commands=[];
  if(this.sensor.colision==true)
   this.actuator.commands.push('RotarIzquierda');
- else if(this.sensor.colision==false )
+ else
   this.actuator.commands.push('Derecho');
 }
+
 
 Ovni.prototype.act=function(environment){
  var command=this.actuator.commands.pop();
