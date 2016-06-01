@@ -126,7 +126,7 @@ Ovni.prototype.sense=function(environment){
  else if((obstaculo2.length >0 && (obstaculo2[0].distance <= limite))){
    this.sensor.colision= 3;}
  else{
-   this.sensor.colision = 0;}
+   this.sensor.colision = 0;
  }
 }
 
