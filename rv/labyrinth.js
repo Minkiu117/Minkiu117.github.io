@@ -116,17 +116,8 @@ Ovni.prototype.sense=function(environment){
  this.sensor.set(this.position,new THREE.Vector3(-Math.cos(theta),Math.sin(theta),0));
  var obstaculo3= this.sensor.intersectObjects(environment.children);
  var limite=2.2;
- if((obstaculo1.length >0 && (obstaculo1[0].distance <= limite)))
-        {
-         this.sensor.colision= 2;
-        }
-        else if(obstaculo3.length >0 && (obstaculo3[0].distance>=1)){
-            this.sensor.colision= 2;}
-          else if(obstaculo2.length >0 && (obstaculo2[0].distance>=1)){
-              this.sensor.colision= 1;}
-              else{
           this.sensor.colision = 0;}
-}
+
 
 Ovni.prototype.plan = function(environment){
  stepy=((Metay-Ovni.position.y));
@@ -156,8 +147,8 @@ Ovni.prototype.operations = {};
 Ovni.prototype.operations.Derecho = function(robot,step){
  if(step==undefined)
   step=0.1;
- robot.position.x+=step*stepx);
- robot.position.y+=step*stepy);
+ robot.position.x+=step*stepx;
+ robot.position.y+=step*stepy;
  robot.cuerpoi.rotation.y-=0.5;
  robot.cuerpos.rotation.y-=0.5;
 };
