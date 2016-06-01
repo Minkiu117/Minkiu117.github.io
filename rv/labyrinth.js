@@ -110,12 +110,12 @@ Ovni.prototype.sense=function(environment){
  this.sensor.set(this.position, new THREE.Vector3(3*Math.PI/2+Math.cos(this.rotation.z),3*Math.PI/2+Math.sin(this.rotation.z),0));
  var obstaculo = this.sensor.intersectObjects(environment.children,true);
  if ((obstaculo.length>0&&(obstaculo[0].distance<=2.2))){
-  this.sensor.colision=true;
+  this.sensor.colision=false;
  THREE.ImageUtils.crossOrigin = '';
  var texturawm = new THREE.TextureLoader().load('http://minkiu117.github.io/rv/magma.jpg'); 
   obstaculo[0].object.material=new THREE.MeshBasicMaterial({map:texturawm});}
  else
-  this.sensor.colision=false;
+  this.sensor.colision=true;
 }
 
 Ovni.prototype.plan = function(environment){
