@@ -1,8 +1,14 @@
 function Sensor(position,direction){
  THREE.Raycaster.call(this,position,direction);
- this.colision=false;
+ this.colision=2;
 }
 Sensor.prototype=new THREE.Raycaster();
+
+function Sensord(position,direction){
+ THREE.Raycaster.call(this,position,direction);
+ this.colision=2;
+}
+Sensord.prototype=new THREE.Raycaster();
 
 function Cabina(){
   THREE.Object3D.call(this);
@@ -53,6 +59,7 @@ function Ovni(x=0, y=0){
  this.add(this.luzrd.target);
  
  this.sensor=new Sensor();
+ this.sensord=new Sensord();
  this.actuator=new Array();
  
  this.cuerpos.rotation.x=Math.PI/2;
