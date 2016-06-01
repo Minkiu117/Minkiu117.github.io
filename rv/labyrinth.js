@@ -120,7 +120,7 @@ Ovni.prototype.sense=function(environment){
 
 Wall.prototype.sense=function(environment){
  this.sensor.set(this.position, new THREE.Vector3(0,0,0));
-
+}
 
 Ovni.prototype.plan = function(environment){
  this.actuator.commands=[];
