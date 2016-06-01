@@ -31,24 +31,24 @@ function Ovni(x=0, y=0){
   this.add(this.cuerpoi)
   this.add(this.cabinaovni);
 
- this.luzrf=new THREE.SpotLight(0x12ac24,4,10,0.3);
+ this.luzrf=new THREE.SpotLight(0x12ac24,4,11,0.3);
  this.luzrf.target.updateMatrixWorld();
  this.luzrf.shadow;
  this.luzrf.target.position.set(10,0,0);
  this.add(this.luzrf);
  this.add(this.luzrf.target);
  
- this.luzri=new THREE.SpotLight(0x12ac24,4,10,0.3);
+ this.luzri=new THREE.SpotLight(0x12ac24,4,11,0.3);
  this.luzri.target.updateMatrixWorld();
  this.luzri.shadow;
  this.luzri.target.position.set(0,10,0);
  this.add(this.luzri);
  this.add(this.luzri.target);
  
- this.luzrd=new THREE.SpotLight(0x12ac24,4,-10,0.3);
+ this.luzrd=new THREE.SpotLight(0x12ac24,4,11,0.3);
  this.luzrd.target.updateMatrixWorld();
  this.luzrd.shadow;
- this.luzrd.target.position.set(0,-10,0);
+ this.luzrd.target.position.set(0,11,Math.PI/2);
  this.add(this.luzrd);
  this.add(this.luzrd.target);
  
@@ -109,9 +109,8 @@ Ovni.prototype.sense=function(environment){
  var obstaculo = this.sensor.intersectObjects(environment.children,true);
  if ((obstaculo.length>0&&(obstaculo[0].distance<=2.2))){
   this.sensor.colision=true;
-  this.sensor.colision=true;
   THREE.ImageUtils.crossOrigin = '';
-  var texturaw2 = THREE.ImageUtils.loadTexture('http://minkiu117.github.io/rv/magma.jpg'); 
+  var texturaw2 = THREE.TextureLoader('http://minkiu117.github.io/rv/magma.jpg'); 
   obstaculo[0].object.material=new THREE.MeshBasicMaterial({map:texturaw2});}
  else
   this.sensor.colision=false;
@@ -179,7 +178,7 @@ function setup(){
   mapa[14] = "x                                x";
   mapa[15] = "xxxxx     xxxxxxxxxxxxx      xxxxx";
   mapa[16] = "x   x     x           x      x   x";
-  mapa[17] = "x   x     x      r    x      x   x";
+  mapa[17] = "x   x     x           x      x   x";
   mapa[18] = "x   x     x           x      x   x";
   mapa[19] = "x   x     x           x      x   x";
   mapa[20] = "xxxxx     xxxxxxxxxxxxx      xxxxx";
@@ -196,7 +195,7 @@ function setup(){
   mapa[31] = "x         x           x          x";
   mapa[32] = "x         x           x          x";
   mapa[33] = "x         x           x          x";
-  mapa[34] = "x         x           x          x";
+  mapa[34] = "x         x           x         rx";
   mapa[35] = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
 
  entorno=new Environment();
