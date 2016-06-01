@@ -107,13 +107,13 @@ Environment.prototype.setMap=function(map){
 }	
 
 Ovni.prototype.sense=function(environment){
- this.sensor.set(this.position, new THREE.Vector3(Math.cos(this.rotation.z),Math.sin(this.rotation.z),0));
+ this.sensor.set(this.position, new THREE.Vector3(Math.PI/2+Math.cos(this.rotation.z),Math.PI/2+Math.sin(this.rotation.z),0));
  var obstaculo = this.sensor.intersectObjects(environment.children,true);
  if ((obstaculo.length>0&&(obstaculo[0].distance<=2.2))){
   this.sensor.colision=true;
  THREE.ImageUtils.crossOrigin = '';
- var texturac = THREE.ImageUtils.loadTexture('http://minkiu117.github.io/rv/magma.jpg'); 
-  obstaculo[0].object.material=new THREE.MeshBasicMaterial({map:texturac});}
+ var texturawm = new THREE.TextureLoader().load('http://minkiu117.github.io/rv/magma.jpg'); 
+  obstaculo[0].object.material=new THREE.MeshBasicMaterial({map:texturawm});}
  else
   this.sensor.colision=false;
 }
@@ -200,13 +200,13 @@ function setup(){
   mapa[31] = "x         x           x          x";
   mapa[32] = "x         x           x          x";
   mapa[33] = "x         x           x          x";
-  mapa[34] = "x         x           x         rx";
+  mapa[34] = "x         x           x    r     x";
   mapa[35] = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
 
  entorno=new Environment();
  entorno.setMap(mapa);
  THREE.ImageUtils.crossOrigin = '';
- var texturap = THREE.ImageUtils.loadTexture('http://minkiu117.github.io/rv/piso2.jpg');   //Cargo la textura de las paredes
+ var texturap = new THREE.TextureLoader().load('http://minkiu117.github.io/rv/piso2.jpg');   //Cargo la textura de las paredes
  texturap.wrapS = texturap.wrapT = THREE.RepeatWrapping; 	//Defino que la imagen se repita a lo largo de la malla
  texturap.repeat.set( 10, 10 );
  texturap.anisotropy=256;										//resalta el detalle de la textura
