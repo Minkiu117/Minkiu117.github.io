@@ -120,6 +120,8 @@ Ovni.prototype.sense=function(environment){
 
 
 Ovni.prototype.plan = function(environment){
+ Metay=12.5
+ Metax=15.5
  stepy=((Metay-Ovni.position.y));
  stepx=((Metax-Ovni.position.x));
  console.log(stepy,stepx)
