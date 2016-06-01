@@ -1,14 +1,5 @@
 function Sensor(position,direction){
-  theta = Math.PI/3;
-  var _raycaster=new THREE.Raycaster(this.position,new THREE.Vector3(0,0,0));
-        _raycaster.set(this.position,new THREE.Vector3(-Math.sin(theta),Math.cos(theta),0));
-        var obstaculo1=_raycaster.intersectObjects(environment.children);
-        _raycaster.set(this.position, new THREE.Vector3(Math.sin(theta),-Math.cos(theta),0));
-        var obstaculo2=_raycaster.intersectObjects(environment.children);
-        _raycaster.set(this.position,new THREE.Vector3(Math.cos(theta),Math.sin(theta),0));
-        var obstaculo3=_raycaster.intersectObjects(environment.children);
-        _raycaster.set(this.position, new THREE.Vector3(-Math.cos(theta),-Math.sin(theta),0));
-        var obstaculo4=_raycaster.intersectObjects(environment.children);
+ THREE.Raycaster.call(this,position,direction);
  this.colision=0;
 }
 Sensor.prototype=new THREE.Raycaster();
