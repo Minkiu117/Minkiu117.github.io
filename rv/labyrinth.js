@@ -116,17 +116,17 @@ Ovni.prototype.sense=function(environment){
  var obstaculo3= this.sensor.intersectObjects(environment.children);
  this.sensor.set(this.position, new THREE.Vector3(-Math.cos(theta),-Math.sin(theta),0));
  var obstaculo4= this.sensor.intersectObjects(environment.children);
- var limite=2.2;
+ var limite=1;
  if((obstaculo3.length >0 && (obstaculo3[0].distance <= limite))){
    var texturac = THREE.ImageUtils.loadTexture('http://minkiu117.github.io/rv/magma.jpg'); 
    obstaculo3[0].object.material=new THREE.MeshBasicMaterial({map:texturac});
-   this.sensor.colision= 1;
- else if((obstaculo1.length >0 && (obstaculo1[0].distance <= limite)))
-    this.sensor.colision= 2;
- else if((obstaculo2.length >0 && (obstaculo2[0].distance <= limite)))
-   this.sensor.colision= 3;
- else
-   this.sensor.colision = 0;
+   this.sensor.colision= 1;}
+ else if((obstaculo1.length >0 && (obstaculo1[0].distance <= limite))){
+   this.sensor.colision= 2;}
+ else if((obstaculo2.length >0 && (obstaculo2[0].distance <= limite))){
+   this.sensor.colision= 3;}
+ else{
+   this.sensor.colision = 0;}
  }
 }
 
@@ -225,9 +225,9 @@ function setup(){
   mapa[29] = "x         xxxxxxxxxxxxx          x";
   mapa[30] = "x         x           x          x";
   mapa[31] = "x         x           x          x";
-  mapa[32] = "x         x           x          x";
+  mapa[32] = "x         x           x     r    x";
   mapa[33] = "x         x           x          x";
-  mapa[34] = "x         x           x    r     x";
+  mapa[34] = "x         x           x          x";
   mapa[35] = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
 
  entorno=new Environment();
