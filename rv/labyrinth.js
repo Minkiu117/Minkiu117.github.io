@@ -31,21 +31,21 @@ function Ovni(x=0, y=0){
   this.add(this.cuerpoi)
   this.add(this.cabinaovni);
 
- this.luzrf=new THREE.SpotLight(0x12ac24,4,10,.1);
+ this.luzrf=new THREE.SpotLight(0x12ac24,4,3,2);
  this.luzrf.target.updateMatrixWorld();
  this.luzrf.shadow;
  this.luzrf.target.position.set(10,0,0);
  this.add(this.luzrf);
  this.add(this.luzrf.target);
  
- this.luzri=new THREE.SpotLight(0x12ac24,4,10,.1);
+ this.luzri=new THREE.SpotLight(0x12ac24,4,3,2);
  this.luzri.target.updateMatrixWorld();
  this.luzri.shadow;
  this.luzri.target.position.set(0,10,0);
  this.add(this.luzri);
  this.add(this.luzri.target);
  
- this.luzrd=new THREE.SpotLight(0x12ac24,4,10,.1);
+ this.luzrd=new THREE.SpotLight(0x12ac24,4,3,2);
  this.luzrd.target.updateMatrixWorld();
  this.luzrd.shadow;
  this.luzrd.target.position.set(0,-10,0);
@@ -120,6 +120,7 @@ Ovni.prototype.sense=function(environment){
 
 Wall.prototype.sense=function(environment){
  this.sensor.set(this.position, new THREE.Vector3(0,0,0));
+
 }
 
 Ovni.prototype.plan = function(environment){
@@ -147,6 +148,8 @@ Ovni.prototype.operations.Derecho = function(robot,step){
   step=0.1;
  robot.position.x+=step*Math.cos(robot.rotation.z);
  robot.position.y+=step*Math.sin(robot.rotation.z);
+ console.log(robot.position.x);
+ console.log(robot.position.y);
  robot.cuerpoi.rotation.y-=0.5;
  robot.cuerpos.rotation.y-=0.5;
 };
