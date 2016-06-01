@@ -142,7 +142,7 @@ Ovni.prototype.plan = function(environment){
  else if(this.sensor.colision==2)
   this.actuator.commands.push('RotarIzquierda');
  else if(this.sensor.colision==3)
-  this.actuator.commands.push('RotarIzquierda');
+  this.actuator.commands.push('Atras');
 }
 
 Ovni.prototype.act=function(environment){
@@ -169,6 +169,13 @@ Ovni.prototype.operations.Derecho = function(robot,step){
 Ovni.prototype.operations.RotarDerecha = function(robot,angulo){
  if(angulo==undefined){
   angulo=-Math.PI/2;
+ }
+ robot.rotation.z+=angulo;
+};
+
+Ovni.prototype.operations.Atras = function(robot,angulo){
+ if(angulo==undefined){
+  angulo=-Math.PI;
  }
  robot.rotation.z+=angulo;
 };
