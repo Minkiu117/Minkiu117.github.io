@@ -1,8 +1,8 @@
 function Sensor(position,direction){
-this.raycaster1=new THREE.Raycaster.call(this,position,direction);
-this.raycaster2=new THREE.Raycaster.call(this,position,direction);
-this.raycaster3=new THREE.Raycaster.call(this,position,direction);
-this.raycaster4=new THREE.Raycaster.call(this,position,direction);
+raycaster1=THREE.Raycaster.call(this,position,direction);
+raycaster2=THREE.Raycaster.call(this,position,direction);
+raycaster3=THREE.Raycaster.call(this,position,direction);
+raycaster4=THREE.Raycaster.call(this,position,direction);
  this.colision=false;
 }
 Sensor.prototype=new THREE.Raycaster();
