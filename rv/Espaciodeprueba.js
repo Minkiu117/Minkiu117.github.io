@@ -112,7 +112,7 @@ Environment.prototype.setMap=function(map){
     this.add(new Wall(1, j-offset,-(i-offset)));
    else if(map[i][j]==="r")
     this.add(new Ovni(j-offset,-(i-offset)));
-   else if(map[i][j]==="c")
+   else if(map[i][j]==="o")
     this.add(new Curtain(j-offset,-(i-offset)));
   }
  }
