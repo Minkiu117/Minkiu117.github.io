@@ -284,7 +284,7 @@ function setup(){
  texturap.anisotropy=256;										//resalta el detalle de la textura
  var floor=new THREE.Mesh(new THREE.BoxGeometry(29,36,0.1), new THREE.MeshLambertMaterial({map:texturap}));//Creo el material de la pared tipo Lambert con la textura dada
  floor.position.z=-0.5;
- floor.position.x=-1.5;
+ floor.position.x=-3.5;
  floor.position.y=0.5;
  iluminacion = new THREE.PointLight(0xffffff);
  iluminacion.position.z=30;
