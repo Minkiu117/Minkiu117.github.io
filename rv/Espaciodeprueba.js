@@ -110,8 +110,8 @@ Environment.prototype.setMap=function(map){
   for(var j=0;j<map.length;j++){
    if(map[i][j]==="x")
     this.add(new Wall(1, j-offset,-(i-offset)));
-   else if(map[i][j]==="r")
-    this.add(new Ovni(j-offset,-(i-offset)));
+//   else if(map[i][j]==="r")
+//    this.add(new Ovni(j-offset,-(i-offset)));
    else if(map[i][j]==="o")
     this.add(new Curtain(j-offset,-(i-offset)));
   }
