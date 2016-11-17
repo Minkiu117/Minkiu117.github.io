@@ -78,7 +78,7 @@ Ovni.prototype=new Agent();
 
 function Wall(size,x=0,y=0){
  THREE.ImageUtils.crossOrigin = '';
- var texturaw = new THREE.TextureLoader().load('http://minkiu117.github.io/rv/pared.jpg');
+ var texturaw = new THREE.TextureLoader().load('http://minkiu117.github.io/rv/pared2.jpg');
  THREE.Mesh.call(this,new THREE.BoxGeometry(size,size,size), new  THREE.MeshLambertMaterial({map:texturaw})); 
  this.size=size;
  this.position.x=x;
@@ -284,7 +284,7 @@ function setup(){
  texturap.anisotropy=256;										//resalta el detalle de la textura
  var floor=new THREE.Mesh(new THREE.BoxGeometry(29,36,0.1), new THREE.MeshLambertMaterial({map:texturap}));//Creo el material de la pared tipo Lambert con la textura dada
  floor.position.z=-0.5;
- floor.position.x=-3.5;
+ floor.position.x=-4;
  floor.position.y=0.5;
  iluminacion = new THREE.PointLight(0xffffff);
  iluminacion.position.z=30;
