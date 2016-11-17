@@ -86,7 +86,7 @@ function Wall(size,x=0,y=0){
 }
 Wall.prototype=new THREE.Mesh();
 
-function Wall(size,x=0,y=0){
+function Curtain(size,x=0,y=0){
  THREE.ImageUtils.crossOrigin = '';
  var texturaw = new THREE.TextureLoader().load('http://minkiu117.github.io/rv/cortina.jpg');
  THREE.Mesh.call(this,new THREE.BoxGeometry(size,size,size), new  THREE.MeshLambertMaterial({map:texturaw})); 
