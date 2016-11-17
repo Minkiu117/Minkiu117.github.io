@@ -86,6 +86,16 @@ function Wall(size,x=0,y=0){
 }
 Wall.prototype=new THREE.Mesh();
 
+function Wall(size,x=0,y=0){
+ THREE.ImageUtils.crossOrigin = '';
+ var texturaw = new THREE.TextureLoader().load('http://minkiu117.github.io/rv/cortina.jpg');
+ THREE.Mesh.call(this,new THREE.BoxGeometry(size,size,size), new  THREE.MeshLambertMaterial({map:texturaw})); 
+ this.size=size;
+ this.position.x=x;
+ this.position.y=y;
+}
+Curtain.prototype=new THREE.Mesh();
+
 function WallBasic(size,x=0,y=0){
  THREE.Mesh.call(this,new THREE.BoxGeometry(size,size,size), new  THREE.MeshBasicMaterial({color:0x2194ce})); 
  this.size=size;
@@ -101,7 +111,9 @@ Environment.prototype.setMap=function(map){
    if(map[i][j]==="x")
     this.add(new Wall(1, j-offset,-(i-offset)));
    else if(map[i][j]==="r")
-    this.add(new Ovni(j-offset,-(i-offset)));	
+    this.add(new Ovni(j-offset,-(i-offset)));
+   else if(map[i][j]==="c")
+    this.add(new Curtain(j-offset,-(i-offset)));
   }
  }
 }	
@@ -243,30 +255,30 @@ function setup(){
    mapa[2] = "x                           x";
    mapa[3] = "x                           x";
    mapa[4] = "x                           x";
-   mapa[5] = "x    xxxxx    xxxxxxxxxx    x";
-   mapa[6] = "x    xxxxx    xxxxxxxxxx    x";
-   mapa[7] = "x    xxxxx    xxxxxxxxxx    x";
-   mapa[8] = "x    xxxxx    xxxxxxxxxx    x";
+   mapa[5] = "x    ooooo    oooooooooo    x";
+   mapa[6] = "x    ooooo    oooooooooo    x";
+   mapa[7] = "x    ooooo    oooooooooo    x";
+   mapa[8] = "x    ooooo    oooooooooo    x";
    mapa[9] = "x                           x";
   mapa[10] = "x                           x";
   mapa[11] = "x                           x";
   mapa[12] = "x                           x";
   mapa[13] = "x                           x";
-  mapa[14] = "x    xxxxx    xxxxxxxxxx    x";
-  mapa[15] = "x    xxxxx    xxxxxxxxxx    x";
+  mapa[14] = "x    ooooo    oooooooooo    x";
+  mapa[15] = "x    ooooo    oooooooooo    x";
   mapa[16] = "x                           x";
   mapa[17] = "x                           x";
   mapa[18] = "x                           x";
   mapa[19] = "x                           x";
   mapa[20] = "x                           x";
   mapa[21] = "x                           x";
-  mapa[22] = "x    xxxxx    xxxxxxxxxx    x";
-  mapa[23] = "x    xxxxx    xxxxxxxxxx    x";
-  mapa[24] = "x    xxxxx    xxxxxxxxxx    x";
-  mapa[25] = "x    xxxxx    xxxxxxxxxx    x";
-  mapa[26] = "x    xxxxx    xxxxxxxxxx    x";
-  mapa[27] = "x    xxxxx    xxxxxxxxxx    x";
-  mapa[28] = "x    xxxxx    xxxxxxxxxx    x";
+  mapa[22] = "x    ooooo    oooooooooo    x";
+  mapa[23] = "x    ooooo    oooooooooo    x";
+  mapa[24] = "x    ooooo    oooooooooo    x";
+  mapa[25] = "x    ooooo    oooooooooo    x";
+  mapa[26] = "x    ooooo    oooooooooo    x";
+  mapa[27] = "x    ooooo    oooooooooo    x";
+  mapa[28] = "x    ooooo    oooooooooo    x";
   mapa[29] = "x                           x";
   mapa[30] = "x                           x";
   mapa[31] = "x                           x";
