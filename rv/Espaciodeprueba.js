@@ -282,7 +282,7 @@ function setup(){
  texturap.wrapS = texturap.wrapT = THREE.RepeatWrapping; 	//Defino que la imagen se repita a lo largo de la malla
  texturap.repeat.set( 10, 10 );
  texturap.anisotropy=256;										//resalta el detalle de la textura
- var floor=new THREE.Mesh(new THREE.BoxGeometry(34,36,0.1), new THREE.MeshLambertMaterial({map:texturap}));//Creo el material de la pared tipo Lambert con la textura dada
+ var floor=new THREE.Mesh(new THREE.BoxGeometry(34,30,0.1), new THREE.MeshLambertMaterial({map:texturap}));//Creo el material de la pared tipo Lambert con la textura dada
  floor.position.z=-0.5;
  floor.position.x=-1.5;
  floor.position.y=0.5;
