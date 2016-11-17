@@ -78,7 +78,7 @@ Ovni.prototype=new Agent();
 
 function Wall(size,x=0,y=0){
  THREE.ImageUtils.crossOrigin = '';
- var texturaw = new THREE.TextureLoader().load('http://minkiu117.github.io/rv/ecopiedra.jpg');
+ var texturaw = new THREE.TextureLoader().load('http://minkiu117.github.io/rv/pared.jpg');
  THREE.Mesh.call(this,new THREE.BoxGeometry(size,size,size), new  THREE.MeshLambertMaterial({map:texturaw})); 
  this.size=size;
  this.position.x=x;
